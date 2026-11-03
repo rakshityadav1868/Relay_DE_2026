@@ -23,9 +23,9 @@
 | Role | Name | Enrollment No. | GitHub Username |
 |---|---|---|---|
 | Group Lead | Rakshit Yadav | 2501010369 | rakshityadav1868 |
-| Member 2 | Archit Jain | 2501010579 | Pending |
-| Member 3 | Gourav Jain | 2501010551 | Pending |
-| Member 4 | Ishaan Goel | 2501010191 | Pending |
+| Member 2 | Archit Jain | 2501010579 | archit3757 |
+| Member 3 | Gourav Jain | 2501010551 | gouravj25551-afk |
+| Member 4 | Ishaan Goel | 2501010191 | ishan123456-droid |
 
 **Team No.:** T0114 · **Section:** C · **Repository URL:** https://github.com/rakshityadav1868/Relay_DE_2026
 
