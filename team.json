@@ -1,0 +1,27 @@
+{
+  "team_number": "T0114",
+  "group_lead": {
+    "name": "Rakshit Yadav",
+    "enrollment_no": "2501010369",
+    "github": "rakshityadav1868"
+  },
+  "members": [
+    {
+      "name": "Archit Jain",
+      "enrollment_no": "2501010579",
+      "github": ""
+    },
+    {
+      "name": "Gourav Jain",
+      "enrollment_no": "2501010551",
+      "github": ""
+    },
+    {
+      "name": "Ishaan Goel",
+      "enrollment_no": "2501010191",
+      "github": ""
+    }
+  ],
+  "postgres_version": "15.17",
+  "laptop_used_for_benchmarks": "MacBook Pro (macOS)"
+}

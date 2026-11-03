@@ -21,13 +21,13 @@
 ## Team details (fill in before you start)
 
 | Role | Name | Enrollment No. | GitHub Username |
-|------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+|---|---|---|---|
+| Group Lead | Rakshit Yadav | 2501010369 | rakshityadav1868 |
+| Member 2 | Archit Jain | 2501010579 | Pending |
+| Member 3 | Gourav Jain | 2501010551 | Pending |
+| Member 4 | Ishaan Goel | 2501010191 | Pending |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** T0114 · **Section:** C · **Repository URL:** https://github.com/rakshityadav1868/Relay_DE_2026
 
 ---
 
