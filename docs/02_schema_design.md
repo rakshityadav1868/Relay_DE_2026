@@ -197,3 +197,7 @@ These checks were run against the extracted CSVs; the repository does not yet co
 | Payout week Monday, non-negative financial amounts, and net arithmetic | All 27,015 rows passed. |
 | Reviews belong to completed bookings | All 76,539 reviews passed. |
 | Professional availability versus booking slots on matching dates | 1,466 of 7,137 applicable assigned jobs sit outside the listed daily window; see the snapshot caveat above. |
+
+## In plain terms
+
+I kept the design simple: each table has one clear job, keys connect related rows, and a small set of checks catches common mistakes. The CSVs also contain missing values and some availability mismatches, so I have described those openly instead of hiding them behind complicated rules.
