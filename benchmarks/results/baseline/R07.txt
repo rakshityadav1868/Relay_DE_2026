@@ -1,0 +1,45 @@
+=== R07 run 1 ===
+Aggregate  (cost=5308.82..5308.83 rows=1 width=72) (actual time=8.307..9.207 rows=1.00 loops=1)
+  Buffers: shared hit=2544
+  ->  Gather  (cost=1000.00..5308.81 rows=1 width=13) (actual time=8.187..9.194 rows=2.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=2544
+        ->  Parallel Seq Scan on bookings  (cost=0.00..4308.71 rows=1 width=13) (actual time=6.597..6.669 rows=1.00 loops=2)
+              Filter: ((completed_at >= '2026-06-22 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (pro_id = 425) AND ((status)::text = 'COMPLETED'::text))
+              Rows Removed by Filter: 74999
+              Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=112
+Planning Time: 0.458 ms
+Execution Time: 9.241 ms
+=== R07 run 2 ===
+Aggregate  (cost=5308.82..5308.83 rows=1 width=72) (actual time=8.579..9.712 rows=1.00 loops=1)
+  Buffers: shared hit=2544
+  ->  Gather  (cost=1000.00..5308.81 rows=1 width=13) (actual time=8.447..9.700 rows=2.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=2544
+        ->  Parallel Seq Scan on bookings  (cost=0.00..4308.71 rows=1 width=13) (actual time=6.955..7.039 rows=1.00 loops=2)
+              Filter: ((completed_at >= '2026-06-22 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (pro_id = 425) AND ((status)::text = 'COMPLETED'::text))
+              Rows Removed by Filter: 74999
+              Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=112
+Planning Time: 0.167 ms
+Execution Time: 9.729 ms
+=== R07 run 3 ===
+Aggregate  (cost=5308.82..5308.83 rows=1 width=72) (actual time=8.131..9.190 rows=1.00 loops=1)
+  Buffers: shared hit=2544
+  ->  Gather  (cost=1000.00..5308.81 rows=1 width=13) (actual time=7.963..9.177 rows=2.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=2544
+        ->  Parallel Seq Scan on bookings  (cost=0.00..4308.71 rows=1 width=13) (actual time=6.685..6.800 rows=1.00 loops=2)
+              Filter: ((completed_at >= '2026-06-22 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (pro_id = 425) AND ((status)::text = 'COMPLETED'::text))
+              Rows Removed by Filter: 74999
+              Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=112
+Planning Time: 0.187 ms
+Execution Time: 9.218 ms

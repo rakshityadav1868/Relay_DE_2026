@@ -1,0 +1,63 @@
+=== R10 run 1 ===
+Limit  (cost=5541.18..5541.23 rows=20 width=44) (actual time=24.920..24.922 rows=20.00 loops=1)
+  Buffers: shared hit=2547
+  ->  Sort  (cost=5541.18..5543.02 rows=736 width=44) (actual time=24.919..24.920 rows=20.00 loops=1)
+        Sort Key: (round(((100.0 * (count(*) FILTER (WHERE ((status)::text = 'NO_SHOW'::text)))::numeric) / (count(*))::numeric), 2)) DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=2547
+        ->  HashAggregate  (cost=5484.80..5521.60 rows=736 width=44) (actual time=24.444..24.772 rows=1849.00 loops=1)
+              Group Key: pro_id
+              Filter: (count(*) >= 20)
+              Batches: 1  Memory Usage: 217kB
+              Rows Removed by Filter: 371
+              Buffers: shared hit=2544
+              ->  Seq Scan on bookings  (cost=0.00..4044.00 rows=144080 width=15) (actual time=0.012..9.661 rows=143858.00 loops=1)
+                    Filter: (pro_id IS NOT NULL)
+                    Rows Removed by Filter: 6142
+                    Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=103
+Planning Time: 0.596 ms
+Execution Time: 24.993 ms
+=== R10 run 2 ===
+Limit  (cost=5541.18..5541.23 rows=20 width=44) (actual time=22.572..22.574 rows=20.00 loops=1)
+  Buffers: shared hit=2547
+  ->  Sort  (cost=5541.18..5543.02 rows=736 width=44) (actual time=22.572..22.573 rows=20.00 loops=1)
+        Sort Key: (round(((100.0 * (count(*) FILTER (WHERE ((status)::text = 'NO_SHOW'::text)))::numeric) / (count(*))::numeric), 2)) DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=2547
+        ->  HashAggregate  (cost=5484.80..5521.60 rows=736 width=44) (actual time=22.082..22.427 rows=1849.00 loops=1)
+              Group Key: pro_id
+              Filter: (count(*) >= 20)
+              Batches: 1  Memory Usage: 217kB
+              Rows Removed by Filter: 371
+              Buffers: shared hit=2544
+              ->  Seq Scan on bookings  (cost=0.00..4044.00 rows=144080 width=15) (actual time=0.004..8.878 rows=143858.00 loops=1)
+                    Filter: (pro_id IS NOT NULL)
+                    Rows Removed by Filter: 6142
+                    Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=103
+Planning Time: 0.184 ms
+Execution Time: 22.620 ms
+=== R10 run 3 ===
+Limit  (cost=5541.18..5541.23 rows=20 width=44) (actual time=21.146..21.148 rows=20.00 loops=1)
+  Buffers: shared hit=2547
+  ->  Sort  (cost=5541.18..5543.02 rows=736 width=44) (actual time=21.145..21.146 rows=20.00 loops=1)
+        Sort Key: (round(((100.0 * (count(*) FILTER (WHERE ((status)::text = 'NO_SHOW'::text)))::numeric) / (count(*))::numeric), 2)) DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=2547
+        ->  HashAggregate  (cost=5484.80..5521.60 rows=736 width=44) (actual time=20.665..21.007 rows=1849.00 loops=1)
+              Group Key: pro_id
+              Filter: (count(*) >= 20)
+              Batches: 1  Memory Usage: 217kB
+              Rows Removed by Filter: 371
+              Buffers: shared hit=2544
+              ->  Seq Scan on bookings  (cost=0.00..4044.00 rows=144080 width=15) (actual time=0.004..8.393 rows=143858.00 loops=1)
+                    Filter: (pro_id IS NOT NULL)
+                    Rows Removed by Filter: 6142
+                    Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=103
+Planning Time: 0.175 ms
+Execution Time: 21.194 ms
