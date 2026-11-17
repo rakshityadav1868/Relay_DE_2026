@@ -25,7 +25,7 @@
 | Group Lead | Rakshit Yadav | 2501010369 | rakshityadav1868 |
 | Member 2 | Archit Jain | 2501010579 | archit3757 |
 | Member 3 | Gourav Jain | 2501010551 | gouravj25551-afk |
-| Member 4 | Ishaan Goel | 2501010191 | ishan123456-droid |
+| Member 4 | Ishaan Goel | 2501010191 | ishaanbhai1306 |
 
 **Team No.:** T0114 · **Section:** C · **Repository URL:** https://github.com/rakshityadav1868/Relay_DE_2026
 
