@@ -1,0 +1,31 @@
+query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+R01,READ,0.154,0.147,0.114,0.200,Seq Scan on services | Seq Scan on service_categories
+R02,READ,1.954,1.775,1.479,2.608,Seq Scan on service_categories | Bitmap Heap Scan on pro_skills | Bitmap Index Scan on idx_pro_skills_category_id | Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_id | Index Scan using pro_availability_pkey on pro_availability | Index Scan using idx_bookings_status on bookings
+R03,READ,0.360,0.267,0.252,0.562,Seq Scan on services | Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_customer_id | Bitmap Index Scan on idx_bookings_scheduled_start | Index Scan using professionals_pkey on professionals
+R04,READ,0.261,0.169,0.158,0.457,Seq Scan on services | Index Scan using idx_bookings_scheduled_start on bookings
+R05,READ,0.215,0.149,0.139,0.358,Index Scan using idx_bookings_status on bookings
+R06,READ,0.064,0.062,0.052,0.077,Index Scan using customers_phone_key on customers
+R07,READ,0.550,0.530,0.315,0.805,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_pro_id
+R08,READ,2.053,1.665,1.646,2.847,Seq Scan on professionals | Index Scan using idx_payouts_week_start on payouts
+R09,READ,8.744,9.199,7.528,9.504,Index Scan using idx_bookings_scheduled_start on bookings | Seq Scan on services | Seq Scan on service_categories
+R10,READ,27.091,25.767,23.028,32.478,Seq Scan on bookings
+R11,READ,0.682,0.655,0.623,0.768,Index Scan using idx_reschedules_created_at on reschedules | Index Scan using bookings_pkey on bookings | Index Scan using services_pkey on services
+R12,READ,7.690,7.792,7.418,7.861,Index Scan using idx_bookings_booked_at on bookings
+R13,READ,4.564,4.651,4.284,4.757,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_status | Seq Scan on professionals
+R14,READ,23.012,22.899,20.475,25.663,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_city_id | Seq Scan on services
+R15,READ,11.786,11.957,11.170,12.232,Seq Scan on bookings | Index Scan using idx_reviews_created_at on reviews
+R16,READ,0.728,0.717,0.708,0.760,Index Scan using idx_bookings_booked_at on bookings
+R17,READ,15.181,15.063,14.334,16.145,Index Scan using idx_bookings_booked_at on bookings | Seq Scan on services
+R18,READ,0.139,0.134,0.132,0.152,Index Scan using idx_reviews_created_at on reviews
+R19,READ,44.303,42.025,41.561,49.324,Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_id | Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_pro_id | Bitmap Index Scan on idx_bookings_scheduled_start
+R20,READ,2.392,2.408,2.314,2.455,Index Scan using idx_bookings_scheduled_start on bookings
+R21,READ,17.474,17.251,16.443,18.728,Seq Scan on bookings | Seq Scan on services | Seq Scan on pro_skills
+R22,READ,11.641,10.758,10.323,13.842,Index Scan using idx_bookings_booked_at on bookings
+R23,READ,0.080,0.072,0.071,0.098,Seq Scan on services | Index Scan using bookings_pkey on bookings
+R24,READ,8.945,9.006,8.806,9.023,Index Scan using idx_bookings_scheduled_start on bookings
+R25,READ,11.805,11.516,11.456,12.444,Bitmap Heap Scan on pro_availability | Bitmap Index Scan on idx_pro_availability_work_date | Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_id | Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_pro_id | Bitmap Index Scan on idx_bookings_scheduled_start
+W01,WRITE,0.746,0.770,0.648,0.819,(no scan)
+W02,WRITE,17.571,18.064,16.521,18.129,Index Scan using bookings_pkey on bookings
+W03,WRITE,0.381,0.347,0.222,0.574,Index Scan using idx_bookings_scheduled_start on bookings
+W04,WRITE,14.424,14.099,13.906,15.266,Seq Scan on bookings
+W05,WRITE,4.796,2.663,1.750,9.974,Index Scan using idx_bookings_status on bookings

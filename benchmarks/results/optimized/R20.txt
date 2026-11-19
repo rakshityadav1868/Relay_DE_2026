@@ -1,0 +1,60 @@
+=== R20 run 1 ===
+WindowAgg  (cost=837.08..930.46 rows=5336 width=68) (actual time=2.240..2.248 rows=30 loops=1)
+  Buffers: shared hit=6221
+  ->  Sort  (cost=837.08..850.42 rows=5336 width=36) (actual time=2.236..2.237 rows=30 loops=1)
+        Sort Key: ((bookings.scheduled_start)::date)
+        Sort Method: quicksort  Memory: 26kB
+        Buffers: shared hit=6221
+        ->  HashAggregate  (cost=426.70..506.74 rows=5336 width=36) (actual time=2.208..2.228 rows=30 loops=1)
+              Group Key: (bookings.scheduled_start)::date
+              Batches: 1  Memory Usage: 225kB
+              Buffers: shared hit=6218
+              ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..376.13 rows=6743 width=12) (actual time=0.008..1.564 rows=7111 loops=1)
+                    Index Cond: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: ((status)::text = 'COMPLETED'::text)
+                    Rows Removed by Filter: 1157
+                    Buffers: shared hit=6218
+Planning:
+  Buffers: shared hit=217
+Planning Time: 0.378 ms
+Execution Time: 2.314 ms
+=== R20 run 2 ===
+WindowAgg  (cost=837.08..930.46 rows=5336 width=68) (actual time=2.393..2.401 rows=30 loops=1)
+  Buffers: shared hit=6221
+  ->  Sort  (cost=837.08..850.42 rows=5336 width=36) (actual time=2.389..2.390 rows=30 loops=1)
+        Sort Key: ((bookings.scheduled_start)::date)
+        Sort Method: quicksort  Memory: 26kB
+        Buffers: shared hit=6221
+        ->  HashAggregate  (cost=426.70..506.74 rows=5336 width=36) (actual time=2.361..2.381 rows=30 loops=1)
+              Group Key: (bookings.scheduled_start)::date
+              Batches: 1  Memory Usage: 225kB
+              Buffers: shared hit=6218
+              ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..376.13 rows=6743 width=12) (actual time=0.006..1.691 rows=7111 loops=1)
+                    Index Cond: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: ((status)::text = 'COMPLETED'::text)
+                    Rows Removed by Filter: 1157
+                    Buffers: shared hit=6218
+Planning:
+  Buffers: shared hit=217
+Planning Time: 0.357 ms
+Execution Time: 2.455 ms
+=== R20 run 3 ===
+WindowAgg  (cost=837.08..930.46 rows=5336 width=68) (actual time=2.337..2.345 rows=30 loops=1)
+  Buffers: shared hit=6221
+  ->  Sort  (cost=837.08..850.42 rows=5336 width=36) (actual time=2.332..2.333 rows=30 loops=1)
+        Sort Key: ((bookings.scheduled_start)::date)
+        Sort Method: quicksort  Memory: 26kB
+        Buffers: shared hit=6221
+        ->  HashAggregate  (cost=426.70..506.74 rows=5336 width=36) (actual time=2.302..2.324 rows=30 loops=1)
+              Group Key: (bookings.scheduled_start)::date
+              Batches: 1  Memory Usage: 225kB
+              Buffers: shared hit=6218
+              ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..376.13 rows=6743 width=12) (actual time=0.008..1.638 rows=7111 loops=1)
+                    Index Cond: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: ((status)::text = 'COMPLETED'::text)
+                    Rows Removed by Filter: 1157
+                    Buffers: shared hit=6218
+Planning:
+  Buffers: shared hit=217
+Planning Time: 0.389 ms
+Execution Time: 2.408 ms

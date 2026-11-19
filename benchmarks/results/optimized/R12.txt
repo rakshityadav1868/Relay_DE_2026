@@ -1,0 +1,51 @@
+=== R12 run 1 ===
+GroupAggregate  (cost=2915.12..3080.30 rows=6607 width=48) (actual time=7.025..7.387 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=852 read=137
+  ->  Sort  (cost=2915.12..2931.64 rows=6607 width=11) (actual time=6.920..7.048 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 370kB
+        Buffers: shared hit=852 read=137
+        ->  Index Scan using idx_bookings_booked_at on bookings b  (cost=0.42..2495.91 rows=6607 width=11) (actual time=0.138..6.655 rows=4543 loops=1)
+              Index Cond: ((booked_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+              Filter: (discount > '0'::numeric)
+              Rows Removed by Filter: 45182
+              Buffers: shared hit=849 read=137
+Planning:
+  Buffers: shared hit=202 read=3
+Planning Time: 0.946 ms
+Execution Time: 7.418 ms
+=== R12 run 2 ===
+GroupAggregate  (cost=2915.12..3080.30 rows=6607 width=48) (actual time=7.619..7.824 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=989
+  ->  Sort  (cost=2915.12..2931.64 rows=6607 width=11) (actual time=7.526..7.612 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 370kB
+        Buffers: shared hit=989
+        ->  Index Scan using idx_bookings_booked_at on bookings b  (cost=0.42..2495.91 rows=6607 width=11) (actual time=0.013..7.271 rows=4543 loops=1)
+              Index Cond: ((booked_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+              Filter: (discount > '0'::numeric)
+              Rows Removed by Filter: 45182
+              Buffers: shared hit=986
+Planning:
+  Buffers: shared hit=205
+Planning Time: 0.366 ms
+Execution Time: 7.861 ms
+=== R12 run 3 ===
+GroupAggregate  (cost=2915.12..3080.30 rows=6607 width=48) (actual time=7.411..7.756 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=989
+  ->  Sort  (cost=2915.12..2931.64 rows=6607 width=11) (actual time=7.304..7.430 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 370kB
+        Buffers: shared hit=989
+        ->  Index Scan using idx_bookings_booked_at on bookings b  (cost=0.42..2495.91 rows=6607 width=11) (actual time=0.013..7.050 rows=4543 loops=1)
+              Index Cond: ((booked_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+              Filter: (discount > '0'::numeric)
+              Rows Removed by Filter: 45182
+              Buffers: shared hit=986
+Planning:
+  Buffers: shared hit=205
+Planning Time: 0.417 ms
+Execution Time: 7.792 ms

@@ -1,0 +1,66 @@
+=== W02 run 1 ===
+Update on bookings  (cost=72.93..80.94 rows=0 width=0) (actual time=17.723..17.724 rows=0 loops=1)
+  Buffers: shared hit=3011 read=2 dirtied=6
+  InitPlan 2 (returns $1)
+    ->  Result  (cost=72.50..72.51 rows=1 width=4) (actual time=16.934..16.935 rows=1 loops=1)
+          Buffers: shared hit=2940
+          InitPlan 1 (returns $0)
+            ->  Limit  (cost=0.42..72.50 rows=1 width=4) (actual time=16.932..16.932 rows=1 loops=1)
+                  Buffers: shared hit=2940
+                  ->  Index Scan using bookings_pkey on bookings bookings_1  (cost=0.42..7208.00 rows=100 width=4) (actual time=16.931..16.931 rows=1 loops=1)
+                        Index Cond: (booking_id IS NOT NULL)
+                        Filter: ((status)::text = 'REQUESTED'::text)
+                        Rows Removed by Filter: 148818
+                        Buffers: shared hit=2940
+  ->  Index Scan using bookings_pkey on bookings  (cost=0.42..8.44 rows=1 width=88) (actual time=16.951..16.957 rows=1 loops=1)
+        Index Cond: (booking_id = $1)
+        Buffers: shared hit=2944
+Planning:
+  Buffers: shared hit=179
+Planning Time: 0.410 ms
+Trigger for constraint bookings_pro_id_fkey: time=0.236 calls=1
+Execution Time: 18.064 ms
+=== W02 run 2 ===
+Update on bookings  (cost=72.93..80.94 rows=0 width=0) (actual time=17.814..17.815 rows=0 loops=1)
+  Buffers: shared hit=3017
+  InitPlan 2 (returns $1)
+    ->  Result  (cost=72.50..72.51 rows=1 width=4) (actual time=17.511..17.511 rows=1 loops=1)
+          Buffers: shared hit=2942
+          InitPlan 1 (returns $0)
+            ->  Limit  (cost=0.42..72.50 rows=1 width=4) (actual time=17.509..17.509 rows=1 loops=1)
+                  Buffers: shared hit=2942
+                  ->  Index Scan using bookings_pkey on bookings bookings_1  (cost=0.42..7208.00 rows=100 width=4) (actual time=17.508..17.508 rows=1 loops=1)
+                        Index Cond: (booking_id IS NOT NULL)
+                        Filter: ((status)::text = 'REQUESTED'::text)
+                        Rows Removed by Filter: 148818
+                        Buffers: shared hit=2942
+  ->  Index Scan using bookings_pkey on bookings  (cost=0.42..8.44 rows=1 width=88) (actual time=17.525..17.525 rows=1 loops=1)
+        Index Cond: (booking_id = $1)
+        Buffers: shared hit=2948
+Planning:
+  Buffers: shared hit=179
+Planning Time: 0.300 ms
+Trigger for constraint bookings_pro_id_fkey: time=0.260 calls=1
+Execution Time: 18.129 ms
+=== W02 run 3 ===
+Update on bookings  (cost=72.93..80.94 rows=0 width=0) (actual time=16.221..16.222 rows=0 loops=1)
+  Buffers: shared hit=3017
+  InitPlan 2 (returns $1)
+    ->  Result  (cost=72.50..72.51 rows=1 width=4) (actual time=15.956..15.957 rows=1 loops=1)
+          Buffers: shared hit=2942
+          InitPlan 1 (returns $0)
+            ->  Limit  (cost=0.42..72.50 rows=1 width=4) (actual time=15.955..15.955 rows=1 loops=1)
+                  Buffers: shared hit=2942
+                  ->  Index Scan using bookings_pkey on bookings bookings_1  (cost=0.42..7208.00 rows=100 width=4) (actual time=15.954..15.954 rows=1 loops=1)
+                        Index Cond: (booking_id IS NOT NULL)
+                        Filter: ((status)::text = 'REQUESTED'::text)
+                        Rows Removed by Filter: 148818
+                        Buffers: shared hit=2942
+  ->  Index Scan using bookings_pkey on bookings  (cost=0.42..8.44 rows=1 width=88) (actual time=15.969..15.969 rows=1 loops=1)
+        Index Cond: (booking_id = $1)
+        Buffers: shared hit=2948
+Planning:
+  Buffers: shared hit=179
+Planning Time: 0.378 ms
+Trigger for constraint bookings_pro_id_fkey: time=0.232 calls=1
+Execution Time: 16.521 ms

@@ -1,0 +1,36 @@
+=== W03 run 1 ===
+Update on bookings  (cost=0.29..15.16 rows=0 width=0) (actual time=0.530..0.530 rows=0 loops=1)
+  Buffers: shared hit=179 read=2 dirtied=4
+  ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..15.16 rows=1 width=116) (actual time=0.011..0.038 rows=1 loops=1)
+        Index Cond: ((scheduled_start >= '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-03 00:00:00+05:30'::timestamp with time zone))
+        Filter: ((pro_id = 425) AND ((status)::text = 'ASSIGNED'::text))
+        Rows Removed by Filter: 135
+        Buffers: shared hit=118
+Planning:
+  Buffers: shared hit=180
+Planning Time: 0.320 ms
+Execution Time: 0.574 ms
+=== W03 run 2 ===
+Update on bookings  (cost=0.29..15.16 rows=0 width=0) (actual time=0.180..0.180 rows=0 loops=1)
+  Buffers: shared hit=182 read=1 dirtied=1
+  ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..15.16 rows=1 width=116) (actual time=0.013..0.040 rows=1 loops=1)
+        Index Cond: ((scheduled_start >= '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-03 00:00:00+05:30'::timestamp with time zone))
+        Filter: ((pro_id = 425) AND ((status)::text = 'ASSIGNED'::text))
+        Rows Removed by Filter: 135
+        Buffers: shared hit=120
+Planning:
+  Buffers: shared hit=180
+Planning Time: 0.340 ms
+Execution Time: 0.222 ms
+=== W03 run 3 ===
+Update on bookings  (cost=0.29..15.16 rows=0 width=0) (actual time=0.282..0.283 rows=0 loops=1)
+  Buffers: shared hit=184
+  ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..15.16 rows=1 width=116) (actual time=0.022..0.063 rows=1 loops=1)
+        Index Cond: ((scheduled_start >= '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-03 00:00:00+05:30'::timestamp with time zone))
+        Filter: ((pro_id = 425) AND ((status)::text = 'ASSIGNED'::text))
+        Rows Removed by Filter: 135
+        Buffers: shared hit=121
+Planning:
+  Buffers: shared hit=180
+Planning Time: 0.366 ms
+Execution Time: 0.347 ms

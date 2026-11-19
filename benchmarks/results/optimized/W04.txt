@@ -1,0 +1,63 @@
+=== W04 run 1 ===
+Insert on payouts  (cost=5185.28..5210.38 rows=0 width=0) (actual time=14.221..14.221 rows=0 loops=1)
+  Buffers: shared hit=5443 dirtied=12 written=6
+  ->  Subquery Scan on "*SELECT*"  (cost=5185.28..5210.38 rows=350 width=130) (actual time=12.122..12.487 rows=401 loops=1)
+        Buffers: shared hit=2547
+        ->  GroupAggregate  (cost=5185.28..5203.38 rows=350 width=148) (actual time=12.121..12.443 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=2547
+              ->  Sort  (cost=5185.28..5186.23 rows=380 width=17) (actual time=12.106..12.127 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 43kB
+                    Buffers: shared hit=2547
+                    ->  Seq Scan on bookings  (cost=0.00..5169.00 rows=380 width=17) (actual time=11.911..12.051 rows=462 loops=1)
+                          Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Rows Removed by Filter: 149538
+                          Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=201
+Planning Time: 0.658 ms
+Trigger for constraint payouts_pro_id_fkey: time=0.981 calls=401
+Execution Time: 15.266 ms
+=== W04 run 2 ===
+Insert on payouts  (cost=5185.28..5210.38 rows=0 width=0) (actual time=12.460..12.461 rows=0 loops=1)
+  Buffers: shared hit=6138 dirtied=4 written=2
+  ->  Subquery Scan on "*SELECT*"  (cost=5185.28..5210.38 rows=350 width=130) (actual time=10.359..10.806 rows=401 loops=1)
+        Buffers: shared hit=2547
+        ->  GroupAggregate  (cost=5185.28..5203.38 rows=350 width=148) (actual time=10.357..10.752 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=2547
+              ->  Sort  (cost=5185.28..5186.23 rows=380 width=17) (actual time=10.344..10.361 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 43kB
+                    Buffers: shared hit=2547
+                    ->  Seq Scan on bookings  (cost=0.00..5169.00 rows=380 width=17) (actual time=10.061..10.267 rows=462 loops=1)
+                          Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Rows Removed by Filter: 149538
+                          Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=201
+Planning Time: 0.337 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.395 calls=401
+Execution Time: 13.906 ms
+=== W04 run 3 ===
+Insert on payouts  (cost=5185.28..5210.38 rows=0 width=0) (actual time=12.839..12.840 rows=0 loops=1)
+  Buffers: shared hit=6073 dirtied=4 written=4
+  ->  Subquery Scan on "*SELECT*"  (cost=5185.28..5210.38 rows=350 width=130) (actual time=11.114..11.483 rows=401 loops=1)
+        Buffers: shared hit=2547
+        ->  GroupAggregate  (cost=5185.28..5203.38 rows=350 width=148) (actual time=11.113..11.439 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=2547
+              ->  Sort  (cost=5185.28..5186.23 rows=380 width=17) (actual time=11.101..11.115 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 43kB
+                    Buffers: shared hit=2547
+                    ->  Seq Scan on bookings  (cost=0.00..5169.00 rows=380 width=17) (actual time=10.911..11.047 rows=462 loops=1)
+                          Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Rows Removed by Filter: 149538
+                          Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=201
+Planning Time: 0.331 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.203 calls=401
+Execution Time: 14.099 ms

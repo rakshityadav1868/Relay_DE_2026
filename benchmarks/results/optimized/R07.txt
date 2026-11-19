@@ -1,0 +1,48 @@
+=== R07 run 1 ===
+Aggregate  (cost=224.98..224.99 rows=1 width=72) (actual time=0.746..0.747 rows=1 loops=1)
+  Buffers: shared hit=107 read=1
+  ->  Bitmap Heap Scan on bookings  (cost=4.76..224.96 rows=1 width=13) (actual time=0.717..0.724 rows=2 loops=1)
+        Recheck Cond: (pro_id = 425)
+        Filter: ((completed_at >= '2026-06-22 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+        Rows Removed by Filter: 107
+        Heap Blocks: exact=106
+        Buffers: shared hit=107 read=1
+        ->  Bitmap Index Scan on idx_bookings_pro_id  (cost=0.00..4.76 rows=62 width=0) (actual time=0.345..0.345 rows=109 loops=1)
+              Index Cond: (pro_id = 425)
+              Buffers: shared hit=1 read=1
+Planning:
+  Buffers: shared hit=201
+Planning Time: 1.002 ms
+Execution Time: 0.805 ms
+=== R07 run 2 ===
+Aggregate  (cost=224.98..224.99 rows=1 width=72) (actual time=0.494..0.495 rows=1 loops=1)
+  Buffers: shared hit=108
+  ->  Bitmap Heap Scan on bookings  (cost=4.76..224.96 rows=1 width=13) (actual time=0.467..0.477 rows=2 loops=1)
+        Recheck Cond: (pro_id = 425)
+        Filter: ((completed_at >= '2026-06-22 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+        Rows Removed by Filter: 107
+        Heap Blocks: exact=106
+        Buffers: shared hit=108
+        ->  Bitmap Index Scan on idx_bookings_pro_id  (cost=0.00..4.76 rows=62 width=0) (actual time=0.014..0.014 rows=109 loops=1)
+              Index Cond: (pro_id = 425)
+              Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=201
+Planning Time: 0.793 ms
+Execution Time: 0.530 ms
+=== R07 run 3 ===
+Aggregate  (cost=224.98..224.99 rows=1 width=72) (actual time=0.271..0.272 rows=1 loops=1)
+  Buffers: shared hit=108
+  ->  Bitmap Heap Scan on bookings  (cost=4.76..224.96 rows=1 width=13) (actual time=0.253..0.258 rows=2 loops=1)
+        Recheck Cond: (pro_id = 425)
+        Filter: ((completed_at >= '2026-06-22 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+        Rows Removed by Filter: 107
+        Heap Blocks: exact=106
+        Buffers: shared hit=108
+        ->  Bitmap Index Scan on idx_bookings_pro_id  (cost=0.00..4.76 rows=62 width=0) (actual time=0.016..0.016 rows=109 loops=1)
+              Index Cond: (pro_id = 425)
+              Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=201
+Planning Time: 0.776 ms
+Execution Time: 0.315 ms

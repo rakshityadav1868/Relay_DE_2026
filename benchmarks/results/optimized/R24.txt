@@ -1,0 +1,51 @@
+=== R24 run 1 ===
+GroupAggregate  (cost=2122.86..2152.68 rows=1172 width=48) (actual time=8.915..8.973 rows=7 loops=1)
+  Group Key: (date_trunc('month'::text, scheduled_start))
+  Buffers: shared hit=37952 read=45
+  ->  Sort  (cost=2122.86..2125.92 rows=1224 width=11) (actual time=8.893..8.913 rows=1228 loops=1)
+        Sort Key: (date_trunc('month'::text, scheduled_start))
+        Sort Method: quicksort  Memory: 96kB
+        Buffers: shared hit=37952 read=45
+        ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..2060.08 rows=1224 width=11) (actual time=0.256..8.826 rows=1228 loops=1)
+              Index Cond: (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+              Filter: (cancellation_fee > '0'::numeric)
+              Rows Removed by Filter: 48975
+              Buffers: shared hit=37949 read=45
+Planning:
+  Buffers: shared hit=194
+Planning Time: 0.410 ms
+Execution Time: 9.006 ms
+=== R24 run 2 ===
+GroupAggregate  (cost=2122.86..2152.68 rows=1172 width=48) (actual time=8.700..8.778 rows=7 loops=1)
+  Group Key: (date_trunc('month'::text, scheduled_start))
+  Buffers: shared hit=37997
+  ->  Sort  (cost=2122.86..2125.92 rows=1224 width=11) (actual time=8.673..8.699 rows=1228 loops=1)
+        Sort Key: (date_trunc('month'::text, scheduled_start))
+        Sort Method: quicksort  Memory: 96kB
+        Buffers: shared hit=37997
+        ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..2060.08 rows=1224 width=11) (actual time=0.021..8.602 rows=1228 loops=1)
+              Index Cond: (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+              Filter: (cancellation_fee > '0'::numeric)
+              Rows Removed by Filter: 48975
+              Buffers: shared hit=37994
+Planning:
+  Buffers: shared hit=194
+Planning Time: 0.304 ms
+Execution Time: 8.806 ms
+=== R24 run 3 ===
+GroupAggregate  (cost=2122.86..2152.68 rows=1172 width=48) (actual time=8.926..8.993 rows=7 loops=1)
+  Group Key: (date_trunc('month'::text, scheduled_start))
+  Buffers: shared hit=37997
+  ->  Sort  (cost=2122.86..2125.92 rows=1224 width=11) (actual time=8.899..8.923 rows=1228 loops=1)
+        Sort Key: (date_trunc('month'::text, scheduled_start))
+        Sort Method: quicksort  Memory: 96kB
+        Buffers: shared hit=37997
+        ->  Index Scan using idx_bookings_scheduled_start on bookings  (cost=0.29..2060.08 rows=1224 width=11) (actual time=0.020..8.830 rows=1228 loops=1)
+              Index Cond: (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+              Filter: (cancellation_fee > '0'::numeric)
+              Rows Removed by Filter: 48975
+              Buffers: shared hit=37994
+Planning:
+  Buffers: shared hit=194
+Planning Time: 0.289 ms
+Execution Time: 9.023 ms
