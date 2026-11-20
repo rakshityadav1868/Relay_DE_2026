@@ -1,0 +1,31 @@
+query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+R01,READ,0.079,0.057,0.056,0.124,Seq Scan on services | Seq Scan on service_categories
+R02,READ,0.926,0.855,0.701,1.222,Seq Scan on service_categories | Bitmap Heap Scan on pro_skills | Bitmap Index Scan on idx_pro_skills_category_id | Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_id | Index Scan using bookings_2025_status_idx on bookings_2025 | Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 | Seq Scan on bookings_2026_h2 | Index Scan using pro_availability_pkey on pro_availability
+R03,READ,0.054,0.052,0.048,0.062,Seq Scan on services | Index Scan using bookings_2026_h2_customer_id_idx on bookings_2026_h2 | Index Scan using professionals_pkey on professionals
+R04,READ,0.052,0.051,0.050,0.056,Seq Scan on services | Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2
+R05,READ,0.073,0.071,0.058,0.089,Index Scan using bookings_2025_status_idx on bookings_2025 | Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 | Bitmap Heap Scan on bookings_2026_h2 | Bitmap Index Scan on bookings_2026_h2_status_idx
+R06,READ,0.026,0.026,0.024,0.029,Index Scan using customers_phone_key on customers
+R07,READ,0.222,0.172,0.164,0.330,Bitmap Heap Scan on bookings_2025 | Bitmap Index Scan on bookings_2025_pro_id_idx | Bitmap Heap Scan on bookings_2026_h1 | Bitmap Index Scan on bookings_2026_h1_pro_id_idx | Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2
+R08,READ,0.580,0.593,0.541,0.606,Seq Scan on professionals | Index Scan using idx_payouts_week_start on payouts
+R09,READ,2.732,2.659,2.627,2.909,Index Scan using bookings_2026_h1_scheduled_start_idx on bookings_2026_h1 | Seq Scan on services | Seq Scan on service_categories
+R10,READ,11.196,10.671,10.629,12.288,Seq Scan on bookings_2025 | Seq Scan on bookings_2026_h1 | Seq Scan on bookings_2026_h2
+R11,READ,0.620,0.623,0.587,0.651,Index Scan using idx_reschedules_created_at on reschedules | Index Scan using bookings_2025_pkey on bookings_2025 | Index Scan using bookings_2026_h1_pkey on bookings_2026_h1 | Index Scan using bookings_2026_h2_pkey on bookings_2026_h2 | Seq Scan on services
+R12,READ,4.127,4.161,4.035,4.184,Index Scan using bookings_2025_booked_at_idx on bookings_2025 | Seq Scan on bookings_2026_h1 | Seq Scan on bookings_2026_h2
+R13,READ,3.736,3.828,3.501,3.878,Bitmap Heap Scan on bookings_2025 | Bitmap Index Scan on bookings_2025_status_idx | Bitmap Heap Scan on bookings_2026_h1 | Bitmap Index Scan on bookings_2026_h1_status_idx | Bitmap Heap Scan on bookings_2026_h2 | Bitmap Index Scan on bookings_2026_h2_status_idx | Seq Scan on professionals
+R14,READ,18.350,18.582,17.809,18.658,Bitmap Heap Scan on bookings_2025 | Bitmap Index Scan on bookings_2025_city_id_idx | Bitmap Heap Scan on bookings_2026_h1 | Bitmap Index Scan on bookings_2026_h1_city_id_idx | Bitmap Heap Scan on bookings_2026_h2 | Bitmap Index Scan on bookings_2026_h2_city_id_idx | Seq Scan on services
+R15,READ,16.846,16.748,16.748,17.042,Seq Scan on bookings_2025 | Seq Scan on bookings_2026_h1 | Seq Scan on bookings_2026_h2 | Index Scan using idx_reviews_created_at on reviews
+R16,READ,0.694,0.700,0.669,0.714,Index Scan using bookings_2025_booked_at_idx on bookings_2025 | Index Scan using bookings_2026_h1_booked_at_idx on bookings_2026_h1 | Bitmap Heap Scan on bookings_2026_h2 | Bitmap Index Scan on bookings_2026_h2_city_id_idx
+R17,READ,12.730,12.765,12.623,12.802,Index Scan using bookings_2025_booked_at_idx on bookings_2025 | Seq Scan on bookings_2026_h1 | Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2 | Seq Scan on services
+R18,READ,0.184,0.179,0.174,0.199,Index Scan using idx_reviews_created_at on reviews
+R19,READ,13.315,13.187,12.414,14.343,Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_id | Bitmap Heap Scan on bookings_2026_h1 | Bitmap Index Scan on bookings_2026_h1_pro_id_idx | Bitmap Heap Scan on bookings_2025 | Bitmap Index Scan on bookings_2025_pro_id_idx | Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2
+R20,READ,3.520,2.137,2.083,6.339,Index Scan using bookings_2026_h1_scheduled_start_idx on bookings_2026_h1
+R21,READ,17.791,18.693,13.772,20.909,Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2 | Seq Scan on bookings_2025 | Seq Scan on bookings_2026_h1 | Seq Scan on services | Seq Scan on pro_skills
+R22,READ,13.243,13.184,13.150,13.396,Index Scan using bookings_2025_booked_at_idx on bookings_2025 | Index Scan using bookings_2026_h1_booked_at_idx on bookings_2026_h1 | Index Scan using bookings_2026_h2_booked_at_idx on bookings_2026_h2
+R23,READ,0.060,0.059,0.058,0.063,Seq Scan on services | Index Scan using bookings_2025_pkey on bookings_2025 | Index Scan using bookings_2026_h1_pkey on bookings_2026_h1 | Index Scan using bookings_2026_h2_pkey on bookings_2026_h2
+R24,READ,3.612,3.627,3.580,3.629,Seq Scan on bookings_2026_h1 | Seq Scan on bookings_2026_h2
+R25,READ,8.584,8.554,8.511,8.686,Bitmap Heap Scan on pro_availability | Bitmap Index Scan on idx_pro_availability_work_date | Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_id | Bitmap Heap Scan on bookings_2026_h1 | Bitmap Index Scan on bookings_2026_h1_pro_id_idx | Bitmap Index Scan on bookings_2026_h1_scheduled_start_idx
+W01,WRITE,0.783,0.739,0.710,0.899,(no scan)
+W02,WRITE,0.576,0.471,0.407,0.850,Index Scan using bookings_2025_status_idx on bookings_2025 | Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 | Bitmap Heap Scan on bookings_2026_h2 | Bitmap Index Scan on bookings_2026_h2_status_idx | Index Scan using bookings_2025_pkey on bookings_2025 | Index Scan using bookings_2026_h1_pkey on bookings_2026_h1 | Index Scan using bookings_2026_h2_pkey on bookings_2026_h2
+W03,WRITE,0.166,0.163,0.159,0.175,Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2
+W04,WRITE,9.834,9.836,9.499,10.168,Seq Scan on bookings_2025 | Seq Scan on bookings_2026_h1 | Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2
+W05,WRITE,1.163,1.115,1.058,1.317,Index Scan using bookings_2025_status_idx on bookings_2025 | Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 | Seq Scan on bookings_2026_h2

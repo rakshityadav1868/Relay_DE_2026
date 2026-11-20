@@ -1,0 +1,69 @@
+=== R20 run 1 ===
+WindowAgg  (cost=890.16..991.09 rows=5768 width=68) (actual time=2.079..2.087 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((bookings.scheduled_start)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=6193
+  ->  Sort  (cost=890.15..904.57 rows=5768 width=36) (actual time=2.073..2.073 rows=30.00 loops=1)
+        Sort Key: ((bookings.scheduled_start)::date)
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=6193
+        ->  HashAggregate  (cost=443.30..529.82 rows=5768 width=36) (actual time=2.046..2.065 rows=30.00 loops=1)
+              Group Key: (bookings.scheduled_start)::date
+              Batches: 1  Memory Usage: 169kB
+              Buffers: shared hit=6190
+              ->  Index Scan using bookings_2026_h1_scheduled_start_idx on bookings_2026_h1 bookings  (cost=0.29..390.20 rows=7080 width=12) (actual time=0.011..1.429 rows=7111.00 loops=1)
+                    Index Cond: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: ((status)::text = 'COMPLETED'::text)
+                    Rows Removed by Filter: 1157
+                    Index Searches: 1
+                    Buffers: shared hit=6190
+Planning:
+  Buffers: shared hit=420
+Planning Time: 0.586 ms
+Execution Time: 2.137 ms
+=== R20 run 2 ===
+WindowAgg  (cost=890.16..991.09 rows=5768 width=68) (actual time=2.036..2.044 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((bookings.scheduled_start)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=6193
+  ->  Sort  (cost=890.15..904.57 rows=5768 width=36) (actual time=2.031..2.033 rows=30.00 loops=1)
+        Sort Key: ((bookings.scheduled_start)::date)
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=6193
+        ->  HashAggregate  (cost=443.30..529.82 rows=5768 width=36) (actual time=2.005..2.024 rows=30.00 loops=1)
+              Group Key: (bookings.scheduled_start)::date
+              Batches: 1  Memory Usage: 169kB
+              Buffers: shared hit=6190
+              ->  Index Scan using bookings_2026_h1_scheduled_start_idx on bookings_2026_h1 bookings  (cost=0.29..390.20 rows=7080 width=12) (actual time=0.010..1.393 rows=7111.00 loops=1)
+                    Index Cond: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: ((status)::text = 'COMPLETED'::text)
+                    Rows Removed by Filter: 1157
+                    Index Searches: 1
+                    Buffers: shared hit=6190
+Planning:
+  Buffers: shared hit=420
+Planning Time: 0.583 ms
+Execution Time: 2.083 ms
+=== R20 run 3 ===
+WindowAgg  (cost=890.16..991.09 rows=5768 width=68) (actual time=6.234..6.242 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((bookings.scheduled_start)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=6193
+  ->  Sort  (cost=890.15..904.57 rows=5768 width=36) (actual time=6.224..6.225 rows=30.00 loops=1)
+        Sort Key: ((bookings.scheduled_start)::date)
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=6193
+        ->  HashAggregate  (cost=443.30..529.82 rows=5768 width=36) (actual time=6.186..6.206 rows=30.00 loops=1)
+              Group Key: (bookings.scheduled_start)::date
+              Batches: 1  Memory Usage: 169kB
+              Buffers: shared hit=6190
+              ->  Index Scan using bookings_2026_h1_scheduled_start_idx on bookings_2026_h1 bookings  (cost=0.29..390.20 rows=7080 width=12) (actual time=0.028..4.489 rows=7111.00 loops=1)
+                    Index Cond: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: ((status)::text = 'COMPLETED'::text)
+                    Rows Removed by Filter: 1157
+                    Index Searches: 1
+                    Buffers: shared hit=6190
+Planning:
+  Buffers: shared hit=420
+Planning Time: 2.486 ms
+Execution Time: 6.339 ms

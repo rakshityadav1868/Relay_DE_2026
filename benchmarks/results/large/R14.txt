@@ -1,0 +1,138 @@
+=== R14 run 1 ===
+GroupAggregate  (cost=5151.59..5806.23 rows=23805 width=76) (actual time=15.792..17.741 rows=840.00 loops=1)
+  Group Key: s.category_id, (EXTRACT(isodow FROM b.scheduled_start)), (EXTRACT(hour FROM b.scheduled_start))
+  Buffers: shared hit=2569
+  ->  Sort  (cost=5151.59..5211.10 rows=23805 width=68) (actual time=15.784..16.221 rows=23919.00 loops=1)
+        Sort Key: s.category_id, (EXTRACT(isodow FROM b.scheduled_start)), (EXTRACT(hour FROM b.scheduled_start))
+        Sort Method: quicksort  Memory: 1516kB
+        Buffers: shared hit=2569
+        ->  Hash Join  (cost=181.00..3421.09 rows=23805 width=68) (actual time=0.339..8.401 rows=23919.00 loops=1)
+              Hash Cond: (b.service_id = s.service_id)
+              Buffers: shared hit=2563
+              ->  Append  (cost=178.65..3232.81 rows=23805 width=12) (actual time=0.321..4.564 rows=23919.00 loops=1)
+                    Buffers: shared hit=2562
+                    ->  Bitmap Heap Scan on bookings_2025 b_1  (cost=178.65..2066.00 rows=15788 width=12) (actual time=0.321..2.511 rows=15894.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=1690
+                          Buffers: shared hit=1705
+                          ->  Bitmap Index Scan on bookings_2025_city_id_idx  (cost=0.00..174.70 rows=15788 width=0) (actual time=0.239..0.239 rows=15894.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=15
+                    ->  Bitmap Heap Scan on bookings_2026_h1 b_2  (cost=93.79..1033.99 rows=7936 width=12) (actual time=0.170..1.244 rows=7944.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=841
+                          Buffers: shared hit=849
+                          ->  Bitmap Index Scan on bookings_2026_h1_city_id_idx  (cost=0.00..91.81 rows=7936 width=0) (actual time=0.121..0.121 rows=7944.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=8
+                    ->  Bitmap Heap Scan on bookings_2026_h2 b_3  (cost=4.78..13.79 rows=81 width=12) (actual time=0.008..0.017 rows=81.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=7
+                          Buffers: shared hit=8
+                          ->  Bitmap Index Scan on bookings_2026_h2_city_id_idx  (cost=0.00..4.75 rows=81 width=0) (actual time=0.004..0.004 rows=81.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=1
+              ->  Hash  (cost=1.60..1.60 rows=60 width=8) (actual time=0.008..0.008 rows=60.00 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 11kB
+                    Buffers: shared hit=1
+                    ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=8) (actual time=0.003..0.005 rows=60.00 loops=1)
+                          Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=665
+Planning Time: 1.223 ms
+Execution Time: 17.809 ms
+=== R14 run 2 ===
+GroupAggregate  (cost=5151.59..5806.23 rows=23805 width=76) (actual time=16.431..18.524 rows=840.00 loops=1)
+  Group Key: s.category_id, (EXTRACT(isodow FROM b.scheduled_start)), (EXTRACT(hour FROM b.scheduled_start))
+  Buffers: shared hit=2569
+  ->  Sort  (cost=5151.59..5211.10 rows=23805 width=68) (actual time=16.424..16.889 rows=23919.00 loops=1)
+        Sort Key: s.category_id, (EXTRACT(isodow FROM b.scheduled_start)), (EXTRACT(hour FROM b.scheduled_start))
+        Sort Method: quicksort  Memory: 1516kB
+        Buffers: shared hit=2569
+        ->  Hash Join  (cost=181.00..3421.09 rows=23805 width=68) (actual time=0.299..8.322 rows=23919.00 loops=1)
+              Hash Cond: (b.service_id = s.service_id)
+              Buffers: shared hit=2563
+              ->  Append  (cost=178.65..3232.81 rows=23805 width=12) (actual time=0.281..4.596 rows=23919.00 loops=1)
+                    Buffers: shared hit=2562
+                    ->  Bitmap Heap Scan on bookings_2025 b_1  (cost=178.65..2066.00 rows=15788 width=12) (actual time=0.281..2.513 rows=15894.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=1690
+                          Buffers: shared hit=1705
+                          ->  Bitmap Index Scan on bookings_2025_city_id_idx  (cost=0.00..174.70 rows=15788 width=0) (actual time=0.193..0.193 rows=15894.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=15
+                    ->  Bitmap Heap Scan on bookings_2026_h1 b_2  (cost=93.79..1033.99 rows=7936 width=12) (actual time=0.142..1.265 rows=7944.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=841
+                          Buffers: shared hit=849
+                          ->  Bitmap Index Scan on bookings_2026_h1_city_id_idx  (cost=0.00..91.81 rows=7936 width=0) (actual time=0.098..0.098 rows=7944.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=8
+                    ->  Bitmap Heap Scan on bookings_2026_h2 b_3  (cost=4.78..13.79 rows=81 width=12) (actual time=0.006..0.016 rows=81.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=7
+                          Buffers: shared hit=8
+                          ->  Bitmap Index Scan on bookings_2026_h2_city_id_idx  (cost=0.00..4.75 rows=81 width=0) (actual time=0.003..0.003 rows=81.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=1
+              ->  Hash  (cost=1.60..1.60 rows=60 width=8) (actual time=0.008..0.009 rows=60.00 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 11kB
+                    Buffers: shared hit=1
+                    ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=8) (actual time=0.003..0.005 rows=60.00 loops=1)
+                          Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=665
+Planning Time: 1.276 ms
+Execution Time: 18.582 ms
+=== R14 run 3 ===
+GroupAggregate  (cost=5151.59..5806.23 rows=23805 width=76) (actual time=16.652..18.605 rows=840.00 loops=1)
+  Group Key: s.category_id, (EXTRACT(isodow FROM b.scheduled_start)), (EXTRACT(hour FROM b.scheduled_start))
+  Buffers: shared hit=2569
+  ->  Sort  (cost=5151.59..5211.10 rows=23805 width=68) (actual time=16.642..17.103 rows=23919.00 loops=1)
+        Sort Key: s.category_id, (EXTRACT(isodow FROM b.scheduled_start)), (EXTRACT(hour FROM b.scheduled_start))
+        Sort Method: quicksort  Memory: 1516kB
+        Buffers: shared hit=2569
+        ->  Hash Join  (cost=181.00..3421.09 rows=23805 width=68) (actual time=0.316..8.706 rows=23919.00 loops=1)
+              Hash Cond: (b.service_id = s.service_id)
+              Buffers: shared hit=2563
+              ->  Append  (cost=178.65..3232.81 rows=23805 width=12) (actual time=0.297..4.786 rows=23919.00 loops=1)
+                    Buffers: shared hit=2562
+                    ->  Bitmap Heap Scan on bookings_2025 b_1  (cost=178.65..2066.00 rows=15788 width=12) (actual time=0.296..2.627 rows=15894.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=1690
+                          Buffers: shared hit=1705
+                          ->  Bitmap Index Scan on bookings_2025_city_id_idx  (cost=0.00..174.70 rows=15788 width=0) (actual time=0.207..0.207 rows=15894.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=15
+                    ->  Bitmap Heap Scan on bookings_2026_h1 b_2  (cost=93.79..1033.99 rows=7936 width=12) (actual time=0.161..1.311 rows=7944.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=841
+                          Buffers: shared hit=849
+                          ->  Bitmap Index Scan on bookings_2026_h1_city_id_idx  (cost=0.00..91.81 rows=7936 width=0) (actual time=0.116..0.116 rows=7944.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=8
+                    ->  Bitmap Heap Scan on bookings_2026_h2 b_3  (cost=4.78..13.79 rows=81 width=12) (actual time=0.009..0.018 rows=81.00 loops=1)
+                          Recheck Cond: (city_id = 1)
+                          Heap Blocks: exact=7
+                          Buffers: shared hit=8
+                          ->  Bitmap Index Scan on bookings_2026_h2_city_id_idx  (cost=0.00..4.75 rows=81 width=0) (actual time=0.004..0.004 rows=81.00 loops=1)
+                                Index Cond: (city_id = 1)
+                                Index Searches: 1
+                                Buffers: shared hit=1
+              ->  Hash  (cost=1.60..1.60 rows=60 width=8) (actual time=0.009..0.009 rows=60.00 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 11kB
+                    Buffers: shared hit=1
+                    ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=8) (actual time=0.003..0.005 rows=60.00 loops=1)
+                          Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=665
+Planning Time: 1.095 ms
+Execution Time: 18.658 ms

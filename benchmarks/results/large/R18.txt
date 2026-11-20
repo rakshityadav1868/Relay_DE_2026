@@ -1,0 +1,36 @@
+=== R18 run 1 ===
+Limit  (cost=0.29..17.90 rows=50 width=40) (actual time=0.008..0.167 rows=50.00 loops=1)
+  Buffers: shared hit=449
+  ->  Index Scan Backward using idx_reviews_created_at on reviews r  (cost=0.29..2758.95 rows=7835 width=40) (actual time=0.008..0.165 rows=50.00 loops=1)
+        Filter: (comment ~~* '%late%'::text)
+        Rows Removed by Filter: 529
+        Index Searches: 1
+        Buffers: shared hit=449
+Planning:
+  Buffers: shared hit=102
+Planning Time: 0.235 ms
+Execution Time: 0.179 ms
+=== R18 run 2 ===
+Limit  (cost=0.29..17.90 rows=50 width=40) (actual time=0.008..0.163 rows=50.00 loops=1)
+  Buffers: shared hit=449
+  ->  Index Scan Backward using idx_reviews_created_at on reviews r  (cost=0.29..2758.95 rows=7835 width=40) (actual time=0.007..0.161 rows=50.00 loops=1)
+        Filter: (comment ~~* '%late%'::text)
+        Rows Removed by Filter: 529
+        Index Searches: 1
+        Buffers: shared hit=449
+Planning:
+  Buffers: shared hit=102
+Planning Time: 0.210 ms
+Execution Time: 0.174 ms
+=== R18 run 3 ===
+Limit  (cost=0.29..17.90 rows=50 width=40) (actual time=0.008..0.186 rows=50.00 loops=1)
+  Buffers: shared hit=449
+  ->  Index Scan Backward using idx_reviews_created_at on reviews r  (cost=0.29..2758.95 rows=7835 width=40) (actual time=0.008..0.183 rows=50.00 loops=1)
+        Filter: (comment ~~* '%late%'::text)
+        Rows Removed by Filter: 529
+        Index Searches: 1
+        Buffers: shared hit=449
+Planning:
+  Buffers: shared hit=102
+Planning Time: 0.244 ms
+Execution Time: 0.199 ms

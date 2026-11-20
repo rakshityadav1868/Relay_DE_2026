@@ -1,0 +1,123 @@
+=== R13 run 1 ===
+Hash Right Anti Join  (cost=181.38..3136.11 rows=265 width=22) (actual time=3.447..3.476 rows=377.00 loops=1)
+  Hash Cond: (b.pro_id = p.pro_id)
+  Buffers: shared hit=2549
+  ->  Append  (cost=95.38..2898.95 rows=12167 width=4) (actual time=0.225..2.807 rows=12123.00 loops=1)
+        Buffers: shared hit=2522
+        ->  Bitmap Heap Scan on bookings_2025 b_1  (cost=95.38..1887.13 rows=8140 width=4) (actual time=0.225..1.617 rows=8111.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=1673
+              Buffers: shared hit=1681
+              ->  Bitmap Index Scan on bookings_2025_status_idx  (cost=0.00..93.34 rows=8140 width=0) (actual time=0.144..0.144 rows=8111.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=8
+        ->  Bitmap Heap Scan on bookings_2026_h1 b_2  (cost=47.15..937.93 rows=3982 width=4) (actual time=0.095..0.794 rows=3967.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=827
+              Buffers: shared hit=832
+              ->  Bitmap Index Scan on bookings_2026_h1_status_idx  (cost=0.00..46.16 rows=3982 width=0) (actual time=0.058..0.058 rows=3967.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=5
+        ->  Bitmap Heap Scan on bookings_2026_h2 b_3  (cost=4.50..13.06 rows=45 width=4) (actual time=0.005..0.011 rows=45.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=8
+              Buffers: shared hit=9
+              ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.49 rows=45 width=0) (actual time=0.002..0.002 rows=45.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=1
+  ->  Hash  (cost=58.25..58.25 rows=2220 width=22) (actual time=0.261..0.261 rows=2220.00 loops=1)
+        Buckets: 4096  Batches: 1  Memory Usage: 152kB
+        Buffers: shared hit=27
+        ->  Seq Scan on professionals p  (cost=0.00..58.25 rows=2220 width=22) (actual time=0.003..0.142 rows=2220.00 loops=1)
+              Filter: ((status)::text = 'ACTIVE'::text)
+              Rows Removed by Filter: 280
+              Buffers: shared hit=27
+Planning:
+  Buffers: shared hit=737
+Planning Time: 1.393 ms
+Execution Time: 3.501 ms
+=== R13 run 2 ===
+Hash Right Anti Join  (cost=181.38..3136.11 rows=265 width=22) (actual time=3.810..3.845 rows=377.00 loops=1)
+  Hash Cond: (b.pro_id = p.pro_id)
+  Buffers: shared hit=2549
+  ->  Append  (cost=95.38..2898.95 rows=12167 width=4) (actual time=0.242..3.078 rows=12123.00 loops=1)
+        Buffers: shared hit=2522
+        ->  Bitmap Heap Scan on bookings_2025 b_1  (cost=95.38..1887.13 rows=8140 width=4) (actual time=0.242..1.764 rows=8111.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=1673
+              Buffers: shared hit=1681
+              ->  Bitmap Index Scan on bookings_2025_status_idx  (cost=0.00..93.34 rows=8140 width=0) (actual time=0.152..0.152 rows=8111.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=8
+        ->  Bitmap Heap Scan on bookings_2026_h1 b_2  (cost=47.15..937.93 rows=3982 width=4) (actual time=0.107..0.888 rows=3967.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=827
+              Buffers: shared hit=832
+              ->  Bitmap Index Scan on bookings_2026_h1_status_idx  (cost=0.00..46.16 rows=3982 width=0) (actual time=0.064..0.064 rows=3967.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=5
+        ->  Bitmap Heap Scan on bookings_2026_h2 b_3  (cost=4.50..13.06 rows=45 width=4) (actual time=0.015..0.022 rows=45.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=8
+              Buffers: shared hit=9
+              ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.49 rows=45 width=0) (actual time=0.007..0.007 rows=45.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=1
+  ->  Hash  (cost=58.25..58.25 rows=2220 width=22) (actual time=0.296..0.297 rows=2220.00 loops=1)
+        Buckets: 4096  Batches: 1  Memory Usage: 152kB
+        Buffers: shared hit=27
+        ->  Seq Scan on professionals p  (cost=0.00..58.25 rows=2220 width=22) (actual time=0.004..0.161 rows=2220.00 loops=1)
+              Filter: ((status)::text = 'ACTIVE'::text)
+              Rows Removed by Filter: 280
+              Buffers: shared hit=27
+Planning:
+  Buffers: shared hit=737
+Planning Time: 1.363 ms
+Execution Time: 3.878 ms
+=== R13 run 3 ===
+Hash Right Anti Join  (cost=181.38..3136.11 rows=265 width=22) (actual time=3.769..3.798 rows=377.00 loops=1)
+  Hash Cond: (b.pro_id = p.pro_id)
+  Buffers: shared hit=2549
+  ->  Append  (cost=95.38..2898.95 rows=12167 width=4) (actual time=0.265..3.029 rows=12123.00 loops=1)
+        Buffers: shared hit=2522
+        ->  Bitmap Heap Scan on bookings_2025 b_1  (cost=95.38..1887.13 rows=8140 width=4) (actual time=0.265..1.806 rows=8111.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=1673
+              Buffers: shared hit=1681
+              ->  Bitmap Index Scan on bookings_2025_status_idx  (cost=0.00..93.34 rows=8140 width=0) (actual time=0.164..0.164 rows=8111.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=8
+        ->  Bitmap Heap Scan on bookings_2026_h1 b_2  (cost=47.15..937.93 rows=3982 width=4) (actual time=0.099..0.805 rows=3967.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=827
+              Buffers: shared hit=832
+              ->  Bitmap Index Scan on bookings_2026_h1_status_idx  (cost=0.00..46.16 rows=3982 width=0) (actual time=0.060..0.060 rows=3967.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=5
+        ->  Bitmap Heap Scan on bookings_2026_h2 b_3  (cost=4.50..13.06 rows=45 width=4) (actual time=0.006..0.012 rows=45.00 loops=1)
+              Recheck Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+              Heap Blocks: exact=8
+              Buffers: shared hit=9
+              ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.49 rows=45 width=0) (actual time=0.002..0.003 rows=45.00 loops=1)
+                    Index Cond: ((status)::text = 'CANCELLED_BY_CUSTOMER'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=1
+  ->  Hash  (cost=58.25..58.25 rows=2220 width=22) (actual time=0.317..0.317 rows=2220.00 loops=1)
+        Buckets: 4096  Batches: 1  Memory Usage: 152kB
+        Buffers: shared hit=27
+        ->  Seq Scan on professionals p  (cost=0.00..58.25 rows=2220 width=22) (actual time=0.004..0.151 rows=2220.00 loops=1)
+              Filter: ((status)::text = 'ACTIVE'::text)
+              Rows Removed by Filter: 280
+              Buffers: shared hit=27
+Planning:
+  Buffers: shared hit=737
+Planning Time: 1.313 ms
+Execution Time: 3.828 ms

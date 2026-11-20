@@ -1,0 +1,171 @@
+=== R19 run 1 ===
+Sort  (cost=117092.02..117092.90 rows=355 width=32) (actual time=12.356..12.366 rows=357.00 loops=1)
+  Sort Key: ((SubPlan 1)) DESC
+  Sort Method: quicksort  Memory: 42kB
+  Buffers: shared hit=32922
+  ->  Bitmap Heap Scan on professionals p  (cost=7.37..117076.98 rows=355 width=32) (actual time=0.332..12.314 rows=357.00 loops=1)
+        Recheck Cond: (city_id = 1)
+        Filter: ((status)::text = 'ACTIVE'::text)
+        Rows Removed by Filter: 43
+        Heap Blocks: exact=27
+        Buffers: shared hit=32919
+        ->  Bitmap Index Scan on idx_professionals_city_id  (cost=0.00..7.28 rows=400 width=0) (actual time=0.006..0.006 rows=400.00 loops=1)
+              Index Cond: (city_id = 1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        SubPlan 1
+          ->  Aggregate  (cost=82.23..82.24 rows=1 width=8) (actual time=0.009..0.009 rows=1.00 loops=357)
+                Buffers: shared hit=8189
+                ->  Bitmap Heap Scan on bookings_2026_h1 b  (cost=4.46..82.22 rows=3 width=0) (actual time=0.007..0.008 rows=3.41 loops=357)
+                      Recheck Cond: (pro_id = p.pro_id)
+                      Filter: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                      Rows Removed by Filter: 18
+                      Heap Blocks: exact=7475
+                      Buffers: shared hit=8189
+                      ->  Bitmap Index Scan on bookings_2026_h1_pro_id_idx  (cost=0.00..4.46 rows=22 width=0) (actual time=0.001..0.001 rows=21.24 loops=357)
+                            Index Cond: (pro_id = p.pro_id)
+                            Index Searches: 357
+                            Buffers: shared hit=714
+        SubPlan 2
+          ->  Aggregate  (cost=247.43..247.44 rows=1 width=8) (actual time=0.025..0.025 rows=1.00 loops=357)
+                Buffers: shared hit=24701
+                ->  Append  (cost=4.63..247.27 rows=66 width=8) (actual time=0.004..0.024 rows=64.12 loops=357)
+                      Buffers: shared hit=24701
+                      ->  Bitmap Heap Scan on bookings_2025 b_2  (cost=4.63..156.59 rows=43 width=8) (actual time=0.004..0.016 rows=42.72 loops=357)
+                            Recheck Cond: (pro_id = p.pro_id)
+                            Heap Blocks: exact=15026
+                            Buffers: shared hit=15740
+                            ->  Bitmap Index Scan on bookings_2025_pro_id_idx  (cost=0.00..4.62 rows=43 width=0) (actual time=0.002..0.002 rows=42.72 loops=357)
+                                  Index Cond: (pro_id = p.pro_id)
+                                  Index Searches: 357
+                                  Buffers: shared hit=714
+                      ->  Bitmap Heap Scan on bookings_2026_h1 b_3  (cost=4.46..82.06 rows=22 width=8) (actual time=0.002..0.004 rows=21.24 loops=357)
+                            Recheck Cond: (pro_id = p.pro_id)
+                            Heap Blocks: exact=7475
+                            Buffers: shared hit=8189
+                            ->  Bitmap Index Scan on bookings_2026_h1_pro_id_idx  (cost=0.00..4.46 rows=22 width=0) (actual time=0.001..0.001 rows=21.24 loops=357)
+                                  Index Cond: (pro_id = p.pro_id)
+                                  Index Searches: 357
+                                  Buffers: shared hit=714
+                      ->  Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2 b_4  (cost=0.27..8.29 rows=1 width=8) (actual time=0.000..0.000 rows=0.17 loops=357)
+                            Index Cond: (pro_id = p.pro_id)
+                            Index Searches: 357
+                            Buffers: shared hit=772
+Planning:
+  Buffers: shared hit=701
+Planning Time: 1.447 ms
+Execution Time: 12.414 ms
+=== R19 run 2 ===
+Sort  (cost=117092.02..117092.90 rows=355 width=32) (actual time=13.124..13.133 rows=357.00 loops=1)
+  Sort Key: ((SubPlan 1)) DESC
+  Sort Method: quicksort  Memory: 42kB
+  Buffers: shared hit=32922
+  ->  Bitmap Heap Scan on professionals p  (cost=7.37..117076.98 rows=355 width=32) (actual time=0.362..13.075 rows=357.00 loops=1)
+        Recheck Cond: (city_id = 1)
+        Filter: ((status)::text = 'ACTIVE'::text)
+        Rows Removed by Filter: 43
+        Heap Blocks: exact=27
+        Buffers: shared hit=32919
+        ->  Bitmap Index Scan on idx_professionals_city_id  (cost=0.00..7.28 rows=400 width=0) (actual time=0.007..0.007 rows=400.00 loops=1)
+              Index Cond: (city_id = 1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        SubPlan 1
+          ->  Aggregate  (cost=82.23..82.24 rows=1 width=8) (actual time=0.010..0.010 rows=1.00 loops=357)
+                Buffers: shared hit=8189
+                ->  Bitmap Heap Scan on bookings_2026_h1 b  (cost=4.46..82.22 rows=3 width=0) (actual time=0.008..0.009 rows=3.41 loops=357)
+                      Recheck Cond: (pro_id = p.pro_id)
+                      Filter: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                      Rows Removed by Filter: 18
+                      Heap Blocks: exact=7475
+                      Buffers: shared hit=8189
+                      ->  Bitmap Index Scan on bookings_2026_h1_pro_id_idx  (cost=0.00..4.46 rows=22 width=0) (actual time=0.001..0.001 rows=21.24 loops=357)
+                            Index Cond: (pro_id = p.pro_id)
+                            Index Searches: 357
+                            Buffers: shared hit=714
+        SubPlan 2
+          ->  Aggregate  (cost=247.43..247.44 rows=1 width=8) (actual time=0.026..0.026 rows=1.00 loops=357)
+                Buffers: shared hit=24701
+                ->  Append  (cost=4.63..247.27 rows=66 width=8) (actual time=0.004..0.025 rows=64.12 loops=357)
+                      Buffers: shared hit=24701
+                      ->  Bitmap Heap Scan on bookings_2025 b_2  (cost=4.63..156.59 rows=43 width=8) (actual time=0.003..0.017 rows=42.72 loops=357)
+                            Recheck Cond: (pro_id = p.pro_id)
+                            Heap Blocks: exact=15026
+                            Buffers: shared hit=15740
+                            ->  Bitmap Index Scan on bookings_2025_pro_id_idx  (cost=0.00..4.62 rows=43 width=0) (actual time=0.001..0.001 rows=42.72 loops=357)
+                                  Index Cond: (pro_id = p.pro_id)
+                                  Index Searches: 357
+                                  Buffers: shared hit=714
+                      ->  Bitmap Heap Scan on bookings_2026_h1 b_3  (cost=4.46..82.06 rows=22 width=8) (actual time=0.002..0.004 rows=21.24 loops=357)
+                            Recheck Cond: (pro_id = p.pro_id)
+                            Heap Blocks: exact=7475
+                            Buffers: shared hit=8189
+                            ->  Bitmap Index Scan on bookings_2026_h1_pro_id_idx  (cost=0.00..4.46 rows=22 width=0) (actual time=0.001..0.001 rows=21.24 loops=357)
+                                  Index Cond: (pro_id = p.pro_id)
+                                  Index Searches: 357
+                                  Buffers: shared hit=714
+                      ->  Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2 b_4  (cost=0.27..8.29 rows=1 width=8) (actual time=0.000..0.000 rows=0.17 loops=357)
+                            Index Cond: (pro_id = p.pro_id)
+                            Index Searches: 357
+                            Buffers: shared hit=772
+Planning:
+  Buffers: shared hit=701
+Planning Time: 1.313 ms
+Execution Time: 13.187 ms
+=== R19 run 3 ===
+Sort  (cost=117092.02..117092.90 rows=355 width=32) (actual time=14.280..14.290 rows=357.00 loops=1)
+  Sort Key: ((SubPlan 1)) DESC
+  Sort Method: quicksort  Memory: 42kB
+  Buffers: shared hit=32922
+  ->  Bitmap Heap Scan on professionals p  (cost=7.37..117076.98 rows=355 width=32) (actual time=0.365..14.234 rows=357.00 loops=1)
+        Recheck Cond: (city_id = 1)
+        Filter: ((status)::text = 'ACTIVE'::text)
+        Rows Removed by Filter: 43
+        Heap Blocks: exact=27
+        Buffers: shared hit=32919
+        ->  Bitmap Index Scan on idx_professionals_city_id  (cost=0.00..7.28 rows=400 width=0) (actual time=0.007..0.007 rows=400.00 loops=1)
+              Index Cond: (city_id = 1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        SubPlan 1
+          ->  Aggregate  (cost=82.23..82.24 rows=1 width=8) (actual time=0.011..0.011 rows=1.00 loops=357)
+                Buffers: shared hit=8189
+                ->  Bitmap Heap Scan on bookings_2026_h1 b  (cost=4.46..82.22 rows=3 width=0) (actual time=0.009..0.010 rows=3.41 loops=357)
+                      Recheck Cond: (pro_id = p.pro_id)
+                      Filter: ((scheduled_start >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-01 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                      Rows Removed by Filter: 18
+                      Heap Blocks: exact=7475
+                      Buffers: shared hit=8189
+                      ->  Bitmap Index Scan on bookings_2026_h1_pro_id_idx  (cost=0.00..4.46 rows=22 width=0) (actual time=0.001..0.001 rows=21.24 loops=357)
+                            Index Cond: (pro_id = p.pro_id)
+                            Index Searches: 357
+                            Buffers: shared hit=714
+        SubPlan 2
+          ->  Aggregate  (cost=247.43..247.44 rows=1 width=8) (actual time=0.029..0.029 rows=1.00 loops=357)
+                Buffers: shared hit=24701
+                ->  Append  (cost=4.63..247.27 rows=66 width=8) (actual time=0.004..0.027 rows=64.12 loops=357)
+                      Buffers: shared hit=24701
+                      ->  Bitmap Heap Scan on bookings_2025 b_2  (cost=4.63..156.59 rows=43 width=8) (actual time=0.004..0.019 rows=42.72 loops=357)
+                            Recheck Cond: (pro_id = p.pro_id)
+                            Heap Blocks: exact=15026
+                            Buffers: shared hit=15740
+                            ->  Bitmap Index Scan on bookings_2025_pro_id_idx  (cost=0.00..4.62 rows=43 width=0) (actual time=0.002..0.002 rows=42.72 loops=357)
+                                  Index Cond: (pro_id = p.pro_id)
+                                  Index Searches: 357
+                                  Buffers: shared hit=714
+                      ->  Bitmap Heap Scan on bookings_2026_h1 b_3  (cost=4.46..82.06 rows=22 width=8) (actual time=0.002..0.005 rows=21.24 loops=357)
+                            Recheck Cond: (pro_id = p.pro_id)
+                            Heap Blocks: exact=7475
+                            Buffers: shared hit=8189
+                            ->  Bitmap Index Scan on bookings_2026_h1_pro_id_idx  (cost=0.00..4.46 rows=22 width=0) (actual time=0.001..0.001 rows=21.24 loops=357)
+                                  Index Cond: (pro_id = p.pro_id)
+                                  Index Searches: 357
+                                  Buffers: shared hit=714
+                      ->  Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2 b_4  (cost=0.27..8.29 rows=1 width=8) (actual time=0.000..0.000 rows=0.17 loops=357)
+                            Index Cond: (pro_id = p.pro_id)
+                            Index Searches: 357
+                            Buffers: shared hit=772
+Planning:
+  Buffers: shared hit=701
+Planning Time: 1.271 ms
+Execution Time: 14.343 ms

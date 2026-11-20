@@ -1,0 +1,27 @@
+=== R06 run 1 ===
+Index Scan using customers_phone_key on customers  (cost=0.29..8.31 rows=1 width=24) (actual time=0.013..0.013 rows=1.00 loops=1)
+  Index Cond: ((phone)::text = '9100001042'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=105 dirtied=1
+Planning Time: 0.284 ms
+Execution Time: 0.029 ms
+=== R06 run 2 ===
+Index Scan using customers_phone_key on customers  (cost=0.29..8.31 rows=1 width=24) (actual time=0.009..0.010 rows=1.00 loops=1)
+  Index Cond: ((phone)::text = '9100001042'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=105
+Planning Time: 0.216 ms
+Execution Time: 0.026 ms
+=== R06 run 3 ===
+Index Scan using customers_phone_key on customers  (cost=0.29..8.31 rows=1 width=24) (actual time=0.009..0.010 rows=1.00 loops=1)
+  Index Cond: ((phone)::text = '9100001042'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=105
+Planning Time: 0.211 ms
+Execution Time: 0.024 ms

@@ -1,0 +1,111 @@
+=== R16 run 1 ===
+Limit  (cost=435.20..435.22 rows=10 width=15) (actual time=0.640..0.641 rows=10.00 loops=1)
+  Buffers: shared hit=171
+  ->  Sort  (cost=435.20..435.45 rows=100 width=15) (actual time=0.640..0.641 rows=10.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=171
+        ->  HashAggregate  (cost=432.04..433.04 rows=100 width=15) (actual time=0.630..0.631 rows=16.00 loops=1)
+              Group Key: bookings.pincode
+              Batches: 1  Memory Usage: 32kB
+              Buffers: shared hit=168
+              ->  Append  (cost=0.29..425.44 rows=1320 width=7) (actual time=0.008..0.557 rows=1360.00 loops=1)
+                    Buffers: shared hit=168
+                    ->  Index Scan using bookings_2025_booked_at_idx on bookings_2025 bookings_1  (cost=0.29..8.31 rows=1 width=7) (actual time=0.001..0.001 rows=0.00 loops=1)
+                          Index Cond: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Filter: (city_id = 2)
+                          Index Searches: 1
+                          Buffers: shared hit=2
+                    ->  Index Scan using bookings_2026_h1_booked_at_idx on bookings_2026_h1 bookings_2  (cost=0.29..396.46 rows=1243 width=7) (actual time=0.007..0.500 rows=1284.00 loops=1)
+                          Index Cond: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Filter: (city_id = 2)
+                          Rows Removed by Filter: 6469
+                          Index Searches: 1
+                          Buffers: shared hit=158
+                    ->  Bitmap Heap Scan on bookings_2026_h2 bookings_3  (cost=4.74..14.07 rows=76 width=7) (actual time=0.007..0.016 rows=76.00 loops=1)
+                          Recheck Cond: (city_id = 2)
+                          Filter: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Heap Blocks: exact=7
+                          Buffers: shared hit=8
+                          ->  Bitmap Index Scan on bookings_2026_h2_city_id_idx  (cost=0.00..4.72 rows=76 width=0) (actual time=0.003..0.003 rows=76.00 loops=1)
+                                Index Cond: (city_id = 2)
+                                Index Searches: 1
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=654
+Planning Time: 0.979 ms
+Execution Time: 0.669 ms
+=== R16 run 2 ===
+Limit  (cost=435.20..435.22 rows=10 width=15) (actual time=0.680..0.681 rows=10.00 loops=1)
+  Buffers: shared hit=171
+  ->  Sort  (cost=435.20..435.45 rows=100 width=15) (actual time=0.679..0.680 rows=10.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=171
+        ->  HashAggregate  (cost=432.04..433.04 rows=100 width=15) (actual time=0.666..0.667 rows=16.00 loops=1)
+              Group Key: bookings.pincode
+              Batches: 1  Memory Usage: 32kB
+              Buffers: shared hit=168
+              ->  Append  (cost=0.29..425.44 rows=1320 width=7) (actual time=0.010..0.592 rows=1360.00 loops=1)
+                    Buffers: shared hit=168
+                    ->  Index Scan using bookings_2025_booked_at_idx on bookings_2025 bookings_1  (cost=0.29..8.31 rows=1 width=7) (actual time=0.001..0.001 rows=0.00 loops=1)
+                          Index Cond: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Filter: (city_id = 2)
+                          Index Searches: 1
+                          Buffers: shared hit=2
+                    ->  Index Scan using bookings_2026_h1_booked_at_idx on bookings_2026_h1 bookings_2  (cost=0.29..396.46 rows=1243 width=7) (actual time=0.008..0.528 rows=1284.00 loops=1)
+                          Index Cond: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Filter: (city_id = 2)
+                          Rows Removed by Filter: 6469
+                          Index Searches: 1
+                          Buffers: shared hit=158
+                    ->  Bitmap Heap Scan on bookings_2026_h2 bookings_3  (cost=4.74..14.07 rows=76 width=7) (actual time=0.008..0.019 rows=76.00 loops=1)
+                          Recheck Cond: (city_id = 2)
+                          Filter: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Heap Blocks: exact=7
+                          Buffers: shared hit=8
+                          ->  Bitmap Index Scan on bookings_2026_h2_city_id_idx  (cost=0.00..4.72 rows=76 width=0) (actual time=0.004..0.004 rows=76.00 loops=1)
+                                Index Cond: (city_id = 2)
+                                Index Searches: 1
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=652
+Planning Time: 1.234 ms
+Execution Time: 0.714 ms
+=== R16 run 3 ===
+Limit  (cost=435.20..435.22 rows=10 width=15) (actual time=0.670..0.671 rows=10.00 loops=1)
+  Buffers: shared hit=171
+  ->  Sort  (cost=435.20..435.45 rows=100 width=15) (actual time=0.669..0.670 rows=10.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=171
+        ->  HashAggregate  (cost=432.04..433.04 rows=100 width=15) (actual time=0.657..0.659 rows=16.00 loops=1)
+              Group Key: bookings.pincode
+              Batches: 1  Memory Usage: 32kB
+              Buffers: shared hit=168
+              ->  Append  (cost=0.29..425.44 rows=1320 width=7) (actual time=0.009..0.580 rows=1360.00 loops=1)
+                    Buffers: shared hit=168
+                    ->  Index Scan using bookings_2025_booked_at_idx on bookings_2025 bookings_1  (cost=0.29..8.31 rows=1 width=7) (actual time=0.001..0.001 rows=0.00 loops=1)
+                          Index Cond: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Filter: (city_id = 2)
+                          Index Searches: 1
+                          Buffers: shared hit=2
+                    ->  Index Scan using bookings_2026_h1_booked_at_idx on bookings_2026_h1 bookings_2  (cost=0.29..396.46 rows=1243 width=7) (actual time=0.008..0.516 rows=1284.00 loops=1)
+                          Index Cond: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Filter: (city_id = 2)
+                          Rows Removed by Filter: 6469
+                          Index Searches: 1
+                          Buffers: shared hit=158
+                    ->  Bitmap Heap Scan on bookings_2026_h2 bookings_3  (cost=4.74..14.07 rows=76 width=7) (actual time=0.008..0.019 rows=76.00 loops=1)
+                          Recheck Cond: (city_id = 2)
+                          Filter: ((booked_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (booked_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Heap Blocks: exact=7
+                          Buffers: shared hit=8
+                          ->  Bitmap Index Scan on bookings_2026_h2_city_id_idx  (cost=0.00..4.72 rows=76 width=0) (actual time=0.004..0.004 rows=76.00 loops=1)
+                                Index Cond: (city_id = 2)
+                                Index Searches: 1
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=652
+Planning Time: 0.968 ms
+Execution Time: 0.700 ms

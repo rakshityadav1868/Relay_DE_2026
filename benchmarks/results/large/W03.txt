@@ -1,0 +1,39 @@
+=== W03 run 1 ===
+Update on bookings  (cost=0.27..8.30 rows=0 width=0) (actual time=0.125..0.125 rows=0.00 loops=1)
+  Update on bookings_2026_h2 bookings_1
+  Buffers: shared hit=55 dirtied=2
+  ->  Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2 bookings_1  (cost=0.27..8.30 rows=1 width=120) (actual time=0.006..0.008 rows=1.00 loops=1)
+        Index Cond: (pro_id = 425)
+        Filter: ((scheduled_start >= '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-03 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'ASSIGNED'::text))
+        Index Searches: 1
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=382
+Planning Time: 0.515 ms
+Execution Time: 0.175 ms
+=== W03 run 2 ===
+Update on bookings  (cost=0.27..8.30 rows=0 width=0) (actual time=0.111..0.111 rows=0.00 loops=1)
+  Update on bookings_2026_h2 bookings_1
+  Buffers: shared hit=55
+  ->  Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2 bookings_1  (cost=0.27..8.30 rows=1 width=120) (actual time=0.008..0.009 rows=1.00 loops=1)
+        Index Cond: (pro_id = 425)
+        Filter: ((scheduled_start >= '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-03 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'ASSIGNED'::text))
+        Index Searches: 1
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=382
+Planning Time: 0.490 ms
+Execution Time: 0.159 ms
+=== W03 run 3 ===
+Update on bookings  (cost=0.27..8.30 rows=0 width=0) (actual time=0.114..0.114 rows=0.00 loops=1)
+  Update on bookings_2026_h2 bookings_1
+  Buffers: shared hit=55
+  ->  Index Scan using bookings_2026_h2_pro_id_idx on bookings_2026_h2 bookings_1  (cost=0.27..8.30 rows=1 width=120) (actual time=0.008..0.010 rows=1.00 loops=1)
+        Index Cond: (pro_id = 425)
+        Filter: ((scheduled_start >= '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND (scheduled_start < '2026-07-03 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'ASSIGNED'::text))
+        Index Searches: 1
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=382
+Planning Time: 0.496 ms
+Execution Time: 0.163 ms

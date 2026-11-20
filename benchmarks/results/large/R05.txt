@@ -1,0 +1,93 @@
+=== R05 run 1 ===
+Sort  (cost=27.87..27.99 rows=47 width=20) (actual time=0.053..0.054 rows=46.00 loops=1)
+  Sort Key: bookings.scheduled_start
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=16
+  ->  Append  (cost=0.29..26.57 rows=47 width=20) (actual time=0.023..0.040 rows=46.00 loops=1)
+        Buffers: shared hit=13
+        ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_1  (cost=0.29..6.15 rows=1 width=20) (actual time=0.009..0.009 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_2  (cost=0.29..6.13 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Bitmap Heap Scan on bookings_2026_h2 bookings_3  (cost=4.79..14.05 rows=45 width=20) (actual time=0.010..0.025 rows=46.00 loops=1)
+              Recheck Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Rows Removed by Filter: 38
+              Heap Blocks: exact=8
+              Buffers: shared hit=9
+              ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.78 rows=84 width=0) (actual time=0.004..0.004 rows=84.00 loops=1)
+                    Index Cond: ((status)::text = 'REQUESTED'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=626
+Planning Time: 1.126 ms
+Execution Time: 0.071 ms
+=== R05 run 2 ===
+Sort  (cost=27.87..27.99 rows=47 width=20) (actual time=0.043..0.044 rows=46.00 loops=1)
+  Sort Key: bookings.scheduled_start
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=16
+  ->  Append  (cost=0.29..26.57 rows=47 width=20) (actual time=0.018..0.031 rows=46.00 loops=1)
+        Buffers: shared hit=13
+        ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_1  (cost=0.29..6.15 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_2  (cost=0.29..6.13 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Bitmap Heap Scan on bookings_2026_h2 bookings_3  (cost=4.79..14.05 rows=45 width=20) (actual time=0.008..0.020 rows=46.00 loops=1)
+              Recheck Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Rows Removed by Filter: 38
+              Heap Blocks: exact=8
+              Buffers: shared hit=9
+              ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.78 rows=84 width=0) (actual time=0.004..0.004 rows=84.00 loops=1)
+                    Index Cond: ((status)::text = 'REQUESTED'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=620
+Planning Time: 0.966 ms
+Execution Time: 0.058 ms
+=== R05 run 3 ===
+Sort  (cost=27.87..27.99 rows=47 width=20) (actual time=0.070..0.072 rows=46.00 loops=1)
+  Sort Key: bookings.scheduled_start
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=16
+  ->  Append  (cost=0.29..26.57 rows=47 width=20) (actual time=0.041..0.057 rows=46.00 loops=1)
+        Buffers: shared hit=13
+        ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_1  (cost=0.29..6.15 rows=1 width=20) (actual time=0.007..0.007 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_2  (cost=0.29..6.13 rows=1 width=20) (actual time=0.024..0.024 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Bitmap Heap Scan on bookings_2026_h2 bookings_3  (cost=4.79..14.05 rows=45 width=20) (actual time=0.010..0.024 rows=46.00 loops=1)
+              Recheck Cond: ((status)::text = 'REQUESTED'::text)
+              Filter: (scheduled_start < '2026-07-02 12:00:00+05:30'::timestamp with time zone)
+              Rows Removed by Filter: 38
+              Heap Blocks: exact=8
+              Buffers: shared hit=9
+              ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.78 rows=84 width=0) (actual time=0.004..0.004 rows=84.00 loops=1)
+                    Index Cond: ((status)::text = 'REQUESTED'::text)
+                    Index Searches: 1
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=620
+Planning Time: 1.166 ms
+Execution Time: 0.089 ms

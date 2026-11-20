@@ -1,0 +1,30 @@
+=== W01 run 1 ===
+Insert on bookings  (cost=0.00..0.01 rows=0 width=0) (actual time=0.267..0.267 rows=0.00 loops=1)
+  Buffers: shared hit=167 dirtied=9
+  ->  Result  (cost=0.00..0.01 rows=1 width=298) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.044 ms
+Trigger for constraint bookings_partitioned_city_id_fkey on bookings_2026_h2: time=0.258 calls=1
+Trigger for constraint bookings_partitioned_customer_id_fkey on bookings_2026_h2: time=0.195 calls=1
+Trigger for constraint bookings_partitioned_pro_id_fkey on bookings_2026_h2: time=0.010 calls=1
+Trigger for constraint bookings_partitioned_service_id_fkey on bookings_2026_h2: time=0.117 calls=1
+Execution Time: 0.899 ms
+=== W01 run 2 ===
+Insert on bookings  (cost=0.00..0.01 rows=0 width=0) (actual time=0.190..0.190 rows=0.00 loops=1)
+  Buffers: shared hit=167
+  ->  Result  (cost=0.00..0.01 rows=1 width=298) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.036 ms
+Trigger for constraint bookings_partitioned_city_id_fkey on bookings_2026_h2: time=0.224 calls=1
+Trigger for constraint bookings_partitioned_customer_id_fkey on bookings_2026_h2: time=0.146 calls=1
+Trigger for constraint bookings_partitioned_pro_id_fkey on bookings_2026_h2: time=0.011 calls=1
+Trigger for constraint bookings_partitioned_service_id_fkey on bookings_2026_h2: time=0.093 calls=1
+Execution Time: 0.710 ms
+=== W01 run 3 ===
+Insert on bookings  (cost=0.00..0.01 rows=0 width=0) (actual time=0.205..0.205 rows=0.00 loops=1)
+  Buffers: shared hit=167
+  ->  Result  (cost=0.00..0.01 rows=1 width=298) (actual time=0.001..0.002 rows=1.00 loops=1)
+Planning Time: 0.038 ms
+Trigger for constraint bookings_partitioned_city_id_fkey on bookings_2026_h2: time=0.227 calls=1
+Trigger for constraint bookings_partitioned_customer_id_fkey on bookings_2026_h2: time=0.150 calls=1
+Trigger for constraint bookings_partitioned_pro_id_fkey on bookings_2026_h2: time=0.011 calls=1
+Trigger for constraint bookings_partitioned_service_id_fkey on bookings_2026_h2: time=0.098 calls=1
+Execution Time: 0.739 ms

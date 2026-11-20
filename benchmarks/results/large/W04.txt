@@ -1,0 +1,96 @@
+=== W04 run 1 ===
+Insert on payouts  (cost=5177.37..5206.40 rows=0 width=0) (actual time=8.990..8.990 rows=0.00 loops=1)
+  Buffers: shared hit=6116 dirtied=109 written=2
+  ->  Subquery Scan on "*SELECT*"  (cost=5177.37..5206.40 rows=403 width=130) (actual time=7.008..7.286 rows=401.00 loops=1)
+        Buffers: shared hit=2537
+        ->  GroupAggregate  (cost=5177.37..5198.34 rows=403 width=148) (actual time=7.005..7.250 rows=401.00 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=2537
+              ->  Sort  (cost=5177.37..5178.48 rows=444 width=17) (actual time=6.997..7.010 rows=462.00 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 40kB
+                    Buffers: shared hit=2537
+                    ->  Append  (cost=0.00..5157.85 rows=444 width=17) (actual time=6.842..6.954 rows=462.00 loops=1)
+                          Buffers: shared hit=2534
+                          ->  Seq Scan on bookings_2025 bookings_1  (cost=0.00..3436.45 rows=1 width=17) (actual time=4.619..4.619 rows=0.00 loops=1)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                                Rows Removed by Filter: 99797
+                                Buffers: shared hit=1690
+                          ->  Seq Scan on bookings_2026_h1 bookings_2  (cost=0.00..1711.01 rows=442 width=17) (actual time=2.222..2.302 rows=462.00 loops=1)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                                Rows Removed by Filter: 49253
+                                Buffers: shared hit=841
+                          ->  Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2 bookings_3  (cost=0.15..8.17 rows=1 width=28) (actual time=0.017..0.017 rows=0.00 loops=1)
+                                Index Cond: ((status)::text = 'COMPLETED'::text)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Index Searches: 1
+                                Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=652
+Planning Time: 0.975 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.133 calls=401
+Execution Time: 10.168 ms
+=== W04 run 2 ===
+Insert on payouts  (cost=5177.37..5206.40 rows=0 width=0) (actual time=8.407..8.408 rows=0.00 loops=1)
+  Buffers: shared hit=6049 dirtied=4 written=4
+  ->  Subquery Scan on "*SELECT*"  (cost=5177.37..5206.40 rows=403 width=130) (actual time=6.894..7.177 rows=401.00 loops=1)
+        Buffers: shared hit=2535
+        ->  GroupAggregate  (cost=5177.37..5198.34 rows=403 width=148) (actual time=6.892..7.142 rows=401.00 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=2535
+              ->  Sort  (cost=5177.37..5178.48 rows=444 width=17) (actual time=6.883..6.898 rows=462.00 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 40kB
+                    Buffers: shared hit=2535
+                    ->  Append  (cost=0.00..5157.85 rows=444 width=17) (actual time=6.740..6.841 rows=462.00 loops=1)
+                          Buffers: shared hit=2532
+                          ->  Seq Scan on bookings_2025 bookings_1  (cost=0.00..3436.45 rows=1 width=17) (actual time=4.509..4.509 rows=0.00 loops=1)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                                Rows Removed by Filter: 99797
+                                Buffers: shared hit=1690
+                          ->  Seq Scan on bookings_2026_h1 bookings_2  (cost=0.00..1711.01 rows=442 width=17) (actual time=2.231..2.309 rows=462.00 loops=1)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                                Rows Removed by Filter: 49253
+                                Buffers: shared hit=841
+                          ->  Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2 bookings_3  (cost=0.15..8.17 rows=1 width=28) (actual time=0.007..0.007 rows=0.00 loops=1)
+                                Index Cond: ((status)::text = 'COMPLETED'::text)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Index Searches: 1
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=652
+Planning Time: 1.060 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.046 calls=401
+Execution Time: 9.499 ms
+=== W04 run 3 ===
+Insert on payouts  (cost=5177.37..5206.40 rows=0 width=0) (actual time=8.817..8.817 rows=0.00 loops=1)
+  Buffers: shared hit=6112 dirtied=6 written=5
+  ->  Subquery Scan on "*SELECT*"  (cost=5177.37..5206.40 rows=403 width=130) (actual time=7.129..7.391 rows=401.00 loops=1)
+        Buffers: shared hit=2535
+        ->  GroupAggregate  (cost=5177.37..5198.34 rows=403 width=148) (actual time=7.126..7.357 rows=401.00 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=2535
+              ->  Sort  (cost=5177.37..5178.48 rows=444 width=17) (actual time=7.118..7.131 rows=462.00 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 40kB
+                    Buffers: shared hit=2535
+                    ->  Append  (cost=0.00..5157.85 rows=444 width=17) (actual time=6.971..7.076 rows=462.00 loops=1)
+                          Buffers: shared hit=2532
+                          ->  Seq Scan on bookings_2025 bookings_1  (cost=0.00..3436.45 rows=1 width=17) (actual time=4.677..4.677 rows=0.00 loops=1)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                                Rows Removed by Filter: 99797
+                                Buffers: shared hit=1690
+                          ->  Seq Scan on bookings_2026_h1 bookings_2  (cost=0.00..1711.01 rows=442 width=17) (actual time=2.293..2.373 rows=462.00 loops=1)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                                Rows Removed by Filter: 49253
+                                Buffers: shared hit=841
+                          ->  Index Scan using bookings_2026_h2_status_idx on bookings_2026_h2 bookings_3  (cost=0.15..8.17 rows=1 width=28) (actual time=0.009..0.009 rows=0.00 loops=1)
+                                Index Cond: ((status)::text = 'COMPLETED'::text)
+                                Filter: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Index Searches: 1
+                                Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=652
+Planning Time: 0.934 ms
+Trigger for constraint payouts_pro_id_fkey: time=0.979 calls=401
+Execution Time: 9.836 ms

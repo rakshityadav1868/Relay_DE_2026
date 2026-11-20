@@ -1,0 +1,66 @@
+=== R24 run 1 ===
+GroupAggregate  (cost=1674.79..1705.05 rows=1193 width=48) (actual time=3.497..3.560 rows=7.00 loops=1)
+  Group Key: (date_trunc('month'::text, bookings.scheduled_start))
+  Buffers: shared hit=852
+  ->  Sort  (cost=1674.79..1677.88 rows=1236 width=11) (actual time=3.477..3.500 rows=1228.00 loops=1)
+        Sort Key: (date_trunc('month'::text, bookings.scheduled_start))
+        Sort Method: quicksort  Memory: 87kB
+        Buffers: shared hit=852
+        ->  Append  (cost=0.00..1611.32 rows=1236 width=11) (actual time=0.006..3.425 rows=1228.00 loops=1)
+              Buffers: shared hit=849
+              ->  Seq Scan on bookings_2026_h1 bookings_1  (cost=0.00..1589.79 rows=1225 width=11) (actual time=0.006..3.354 rows=1217.00 loops=1)
+                    Filter: ((cancellation_fee > '0'::numeric) AND (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                    Rows Removed by Filter: 48498
+                    Buffers: shared hit=841
+              ->  Seq Scan on bookings_2026_h2 bookings_2  (cost=0.00..15.35 rows=11 width=11) (actual time=0.006..0.032 rows=11.00 loops=1)
+                    Filter: ((cancellation_fee > '0'::numeric) AND (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                    Rows Removed by Filter: 477
+                    Buffers: shared hit=8
+Planning:
+  Buffers: shared hit=507
+Planning Time: 0.860 ms
+Execution Time: 3.580 ms
+=== R24 run 2 ===
+GroupAggregate  (cost=1674.79..1705.05 rows=1193 width=48) (actual time=3.541..3.604 rows=7.00 loops=1)
+  Group Key: (date_trunc('month'::text, bookings.scheduled_start))
+  Buffers: shared hit=852
+  ->  Sort  (cost=1674.79..1677.88 rows=1236 width=11) (actual time=3.520..3.543 rows=1228.00 loops=1)
+        Sort Key: (date_trunc('month'::text, bookings.scheduled_start))
+        Sort Method: quicksort  Memory: 87kB
+        Buffers: shared hit=852
+        ->  Append  (cost=0.00..1611.32 rows=1236 width=11) (actual time=0.008..3.465 rows=1228.00 loops=1)
+              Buffers: shared hit=849
+              ->  Seq Scan on bookings_2026_h1 bookings_1  (cost=0.00..1589.79 rows=1225 width=11) (actual time=0.007..3.393 rows=1217.00 loops=1)
+                    Filter: ((cancellation_fee > '0'::numeric) AND (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                    Rows Removed by Filter: 48498
+                    Buffers: shared hit=841
+              ->  Seq Scan on bookings_2026_h2 bookings_2  (cost=0.00..15.35 rows=11 width=11) (actual time=0.007..0.034 rows=11.00 loops=1)
+                    Filter: ((cancellation_fee > '0'::numeric) AND (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                    Rows Removed by Filter: 477
+                    Buffers: shared hit=8
+Planning:
+  Buffers: shared hit=507
+Planning Time: 0.737 ms
+Execution Time: 3.627 ms
+=== R24 run 3 ===
+GroupAggregate  (cost=1674.79..1705.05 rows=1193 width=48) (actual time=3.532..3.606 rows=7.00 loops=1)
+  Group Key: (date_trunc('month'::text, bookings.scheduled_start))
+  Buffers: shared hit=852
+  ->  Sort  (cost=1674.79..1677.88 rows=1236 width=11) (actual time=3.509..3.536 rows=1228.00 loops=1)
+        Sort Key: (date_trunc('month'::text, bookings.scheduled_start))
+        Sort Method: quicksort  Memory: 87kB
+        Buffers: shared hit=852
+        ->  Append  (cost=0.00..1611.32 rows=1236 width=11) (actual time=0.007..3.455 rows=1228.00 loops=1)
+              Buffers: shared hit=849
+              ->  Seq Scan on bookings_2026_h1 bookings_1  (cost=0.00..1589.79 rows=1225 width=11) (actual time=0.006..3.375 rows=1217.00 loops=1)
+                    Filter: ((cancellation_fee > '0'::numeric) AND (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                    Rows Removed by Filter: 48498
+                    Buffers: shared hit=841
+              ->  Seq Scan on bookings_2026_h2 bookings_2  (cost=0.00..15.35 rows=11 width=11) (actual time=0.007..0.039 rows=11.00 loops=1)
+                    Filter: ((cancellation_fee > '0'::numeric) AND (scheduled_start >= '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                    Rows Removed by Filter: 477
+                    Buffers: shared hit=8
+Planning:
+  Buffers: shared hit=507
+Planning Time: 0.801 ms
+Execution Time: 3.629 ms

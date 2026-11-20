@@ -1,0 +1,138 @@
+=== W02 run 1 ===
+Update on bookings  (cost=27.07..51.70 rows=0 width=0) (actual time=0.232..0.232 rows=0.00 loops=1)
+  Update on bookings_2025 bookings_1
+  Update on bookings_2026_h1 bookings_2
+  Update on bookings_2026_h2 bookings_3
+  Buffers: shared hit=88 dirtied=4
+  InitPlan 1
+    ->  Aggregate  (cost=26.77..26.78 rows=1 width=4) (actual time=0.045..0.046 rows=1.00 loops=1)
+          Buffers: shared hit=13
+          ->  Append  (cost=0.29..26.56 rows=86 width=4) (actual time=0.023..0.042 rows=84.00 loops=1)
+                Buffers: shared hit=13
+                ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_5  (cost=0.29..6.15 rows=1 width=4) (actual time=0.009..0.009 rows=0.00 loops=1)
+                      Index Cond: ((status)::text = 'REQUESTED'::text)
+                      Index Searches: 1
+                      Buffers: shared hit=2
+                ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_6  (cost=0.29..6.13 rows=1 width=4) (actual time=0.005..0.005 rows=0.00 loops=1)
+                      Index Cond: ((status)::text = 'REQUESTED'::text)
+                      Index Searches: 1
+                      Buffers: shared hit=2
+                ->  Bitmap Heap Scan on bookings_2026_h2 bookings_7  (cost=4.80..13.85 rows=84 width=4) (actual time=0.009..0.024 rows=84.00 loops=1)
+                      Recheck Cond: ((status)::text = 'REQUESTED'::text)
+                      Heap Blocks: exact=8
+                      Buffers: shared hit=9
+                      ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.78 rows=84 width=0) (actual time=0.004..0.004 rows=87.00 loops=1)
+                            Index Cond: ((status)::text = 'REQUESTED'::text)
+                            Index Searches: 1
+                            Buffers: shared hit=1
+  ->  Append  (cost=0.29..24.92 rows=3 width=92) (actual time=0.064..0.065 rows=1.00 loops=1)
+        Buffers: shared hit=20
+        ->  Index Scan using bookings_2025_pkey on bookings_2025 bookings_1  (cost=0.29..8.31 rows=1 width=92) (actual time=0.054..0.054 rows=0.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=15
+        ->  Index Scan using bookings_2026_h1_pkey on bookings_2026_h1 bookings_2  (cost=0.29..8.31 rows=1 width=92) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h2_pkey on bookings_2026_h2 bookings_3  (cost=0.27..8.29 rows=1 width=92) (actual time=0.005..0.006 rows=1.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=593
+Planning Time: 1.402 ms
+Trigger for constraint bookings_partitioned_pro_id_fkey on bookings_2026_h2: time=0.227 calls=1
+Execution Time: 0.850 ms
+=== W02 run 2 ===
+Update on bookings  (cost=27.07..51.70 rows=0 width=0) (actual time=0.168..0.168 rows=0.00 loops=1)
+  Update on bookings_2025 bookings_1
+  Update on bookings_2026_h1 bookings_2
+  Update on bookings_2026_h2 bookings_3
+  Buffers: shared hit=90
+  InitPlan 1
+    ->  Aggregate  (cost=26.77..26.78 rows=1 width=4) (actual time=0.035..0.036 rows=1.00 loops=1)
+          Buffers: shared hit=13
+          ->  Append  (cost=0.29..26.56 rows=86 width=4) (actual time=0.019..0.032 rows=84.00 loops=1)
+                Buffers: shared hit=13
+                ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_5  (cost=0.29..6.15 rows=1 width=4) (actual time=0.006..0.006 rows=0.00 loops=1)
+                      Index Cond: ((status)::text = 'REQUESTED'::text)
+                      Index Searches: 1
+                      Buffers: shared hit=2
+                ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_6  (cost=0.29..6.13 rows=1 width=4) (actual time=0.004..0.004 rows=0.00 loops=1)
+                      Index Cond: ((status)::text = 'REQUESTED'::text)
+                      Index Searches: 1
+                      Buffers: shared hit=2
+                ->  Bitmap Heap Scan on bookings_2026_h2 bookings_7  (cost=4.80..13.85 rows=84 width=4) (actual time=0.009..0.020 rows=84.00 loops=1)
+                      Recheck Cond: ((status)::text = 'REQUESTED'::text)
+                      Heap Blocks: exact=8
+                      Buffers: shared hit=9
+                      ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.78 rows=84 width=0) (actual time=0.003..0.003 rows=87.00 loops=1)
+                            Index Cond: ((status)::text = 'REQUESTED'::text)
+                            Index Searches: 1
+                            Buffers: shared hit=1
+  ->  Append  (cost=0.29..24.92 rows=3 width=92) (actual time=0.051..0.051 rows=1.00 loops=1)
+        Buffers: shared hit=22
+        ->  Index Scan using bookings_2025_pkey on bookings_2025 bookings_1  (cost=0.29..8.31 rows=1 width=92) (actual time=0.042..0.042 rows=0.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=15
+        ->  Index Scan using bookings_2026_h1_pkey on bookings_2026_h1 bookings_2  (cost=0.29..8.31 rows=1 width=92) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h2_pkey on bookings_2026_h2 bookings_3  (cost=0.27..8.29 rows=1 width=92) (actual time=0.005..0.005 rows=1.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=593
+Planning Time: 1.225 ms
+Trigger for constraint bookings_partitioned_pro_id_fkey on bookings_2026_h2: time=0.217 calls=1
+Execution Time: 0.471 ms
+=== W02 run 3 ===
+Update on bookings  (cost=27.07..51.70 rows=0 width=0) (actual time=0.157..0.158 rows=0.00 loops=1)
+  Update on bookings_2025 bookings_1
+  Update on bookings_2026_h1 bookings_2
+  Update on bookings_2026_h2 bookings_3
+  Buffers: shared hit=90
+  InitPlan 1
+    ->  Aggregate  (cost=26.77..26.78 rows=1 width=4) (actual time=0.034..0.035 rows=1.00 loops=1)
+          Buffers: shared hit=13
+          ->  Append  (cost=0.29..26.56 rows=86 width=4) (actual time=0.018..0.031 rows=84.00 loops=1)
+                Buffers: shared hit=13
+                ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_5  (cost=0.29..6.15 rows=1 width=4) (actual time=0.006..0.006 rows=0.00 loops=1)
+                      Index Cond: ((status)::text = 'REQUESTED'::text)
+                      Index Searches: 1
+                      Buffers: shared hit=2
+                ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_6  (cost=0.29..6.13 rows=1 width=4) (actual time=0.003..0.003 rows=0.00 loops=1)
+                      Index Cond: ((status)::text = 'REQUESTED'::text)
+                      Index Searches: 1
+                      Buffers: shared hit=2
+                ->  Bitmap Heap Scan on bookings_2026_h2 bookings_7  (cost=4.80..13.85 rows=84 width=4) (actual time=0.009..0.019 rows=84.00 loops=1)
+                      Recheck Cond: ((status)::text = 'REQUESTED'::text)
+                      Heap Blocks: exact=8
+                      Buffers: shared hit=9
+                      ->  Bitmap Index Scan on bookings_2026_h2_status_idx  (cost=0.00..4.78 rows=84 width=0) (actual time=0.003..0.003 rows=87.00 loops=1)
+                            Index Cond: ((status)::text = 'REQUESTED'::text)
+                            Index Searches: 1
+                            Buffers: shared hit=1
+  ->  Append  (cost=0.29..24.92 rows=3 width=92) (actual time=0.049..0.049 rows=1.00 loops=1)
+        Buffers: shared hit=22
+        ->  Index Scan using bookings_2025_pkey on bookings_2025 bookings_1  (cost=0.29..8.31 rows=1 width=92) (actual time=0.041..0.041 rows=0.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=15
+        ->  Index Scan using bookings_2026_h1_pkey on bookings_2026_h1 bookings_2  (cost=0.29..8.31 rows=1 width=92) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h2_pkey on bookings_2026_h2 bookings_3  (cost=0.27..8.29 rows=1 width=92) (actual time=0.004..0.005 rows=1.00 loops=1)
+              Index Cond: (booking_id = (InitPlan 1).col1)
+              Index Searches: 1
+              Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=593
+Planning Time: 1.022 ms
+Trigger for constraint bookings_partitioned_pro_id_fkey on bookings_2026_h2: time=0.173 calls=1
+Execution Time: 0.407 ms

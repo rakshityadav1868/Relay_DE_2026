@@ -1,0 +1,78 @@
+=== W05 run 1 ===
+Update on bookings  (cost=0.29..28.37 rows=0 width=0) (actual time=0.986..0.987 rows=0.00 loops=1)
+  Update on bookings_2025 bookings_1
+  Update on bookings_2026_h1 bookings_2
+  Update on bookings_2026_h2 bookings_3
+  Buffers: shared hit=2544 dirtied=14 written=2
+  ->  Append  (cost=0.29..28.37 rows=154 width=88) (actual time=0.017..0.057 rows=154.00 loops=1)
+        Buffers: shared hit=12
+        ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_1  (cost=0.29..6.15 rows=1 width=88) (actual time=0.007..0.007 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'ASSIGNED'::text)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone))
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_2  (cost=0.29..6.13 rows=1 width=88) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'ASSIGNED'::text)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone))
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Seq Scan on bookings_2026_h2 bookings_3  (cost=0.00..15.32 rows=152 width=88) (actual time=0.004..0.038 rows=154.00 loops=1)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'ASSIGNED'::text))
+              Rows Removed by Filter: 334
+              Buffers: shared hit=8
+Planning:
+  Buffers: shared hit=582
+Planning Time: 0.948 ms
+Execution Time: 1.058 ms
+=== W05 run 2 ===
+Update on bookings  (cost=0.29..32.39 rows=0 width=0) (actual time=1.047..1.047 rows=0.00 loops=1)
+  Update on bookings_2025 bookings_1
+  Update on bookings_2026_h1 bookings_2
+  Update on bookings_2026_h2 bookings_3
+  Buffers: shared hit=2673 dirtied=2 written=2
+  ->  Append  (cost=0.29..32.39 rows=192 width=88) (actual time=0.017..0.063 rows=154.00 loops=1)
+        Buffers: shared hit=14
+        ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_1  (cost=0.29..6.15 rows=1 width=88) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'ASSIGNED'::text)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone))
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_2  (cost=0.29..6.13 rows=1 width=88) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'ASSIGNED'::text)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone))
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Seq Scan on bookings_2026_h2 bookings_3  (cost=0.00..19.15 rows=190 width=88) (actual time=0.006..0.047 rows=154.00 loops=1)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'ASSIGNED'::text))
+              Rows Removed by Filter: 334
+              Buffers: shared hit=10
+Planning:
+  Buffers: shared hit=582
+Planning Time: 1.035 ms
+Execution Time: 1.115 ms
+=== W05 run 3 ===
+Update on bookings  (cost=0.29..36.42 rows=0 width=0) (actual time=1.253..1.254 rows=0.00 loops=1)
+  Update on bookings_2025 bookings_1
+  Update on bookings_2026_h1 bookings_2
+  Update on bookings_2026_h2 bookings_3
+  Buffers: shared hit=2659 dirtied=2 written=2
+  ->  Append  (cost=0.29..36.42 rows=231 width=88) (actual time=0.017..0.063 rows=154.00 loops=1)
+        Buffers: shared hit=16
+        ->  Index Scan using bookings_2025_status_idx on bookings_2025 bookings_1  (cost=0.29..6.15 rows=1 width=88) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'ASSIGNED'::text)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone))
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using bookings_2026_h1_status_idx on bookings_2026_h1 bookings_2  (cost=0.29..6.13 rows=1 width=88) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: ((status)::text = 'ASSIGNED'::text)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone))
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Seq Scan on bookings_2026_h2 bookings_3  (cost=0.00..22.98 rows=229 width=88) (actual time=0.005..0.046 rows=154.00 loops=1)
+              Filter: ((started_at IS NULL) AND (scheduled_end < '2026-07-02 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'ASSIGNED'::text))
+              Rows Removed by Filter: 334
+              Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=582
+Planning Time: 1.008 ms
+Execution Time: 1.317 ms
